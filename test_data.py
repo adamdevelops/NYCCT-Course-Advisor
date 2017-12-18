@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database_setup import Programs, Base, Courses
+from database_setup import Programs, Base, Courses, Departments
 
 engine = create_engine('sqlite:///coursecatalog.db')
 # Bind the engine to the metadata of the Base class so that the
@@ -25,10 +25,20 @@ dept1 = Departments(code="CET", name="Comp Eng")
 session.add(dept1)
 session.commit()
 
-# program2 = Courses(name="EMT 1111")
-#
-# session.add(program2)
-# session.commit()
+dept2 = Departments(code="EMT", name="Electromech Eng")
+
+session.add(dept2)
+session.commit()
+
+program1 = Courses(name="EMT 1111")
+
+session.add(program1)
+session.commit()
+
+program2 = Courses(name="CET 3645")
+
+session.add(program2)
+session.commit()
 
 
 print "added items!"
