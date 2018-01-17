@@ -30,6 +30,34 @@ def creditDashboard():
     depts = session.query(Departments).all()
     return render_template('dashboard.html', courses = courses, depts = depts)
 
+@app.route('/depts')
+def deptDashboard():
+    courses = session.query(Courses).limit(10).all()
+    depts = session.query(Departments).all()
+    return render_template('departments_dashboard.html', courses = courses, depts = depts)
+
+@app.route('/programs')
+def progDashboard():
+    programs = session.query(Programs).limit(10).all()
+    depts = session.query(Departments).all()
+    return render_template('programs_dashboard.html', progs = programs, depts = depts)
+
+@app.route('/courses')
+def courseDashboard():
+    courses = session.query(Courses).limit(10).all()
+    return render_template('course_dashboard.html', courses = courses)
+
+@app.route('/prereq')
+def courseDashboard():
+    courses = session.query(Prereq).limit(10).all()
+    return render_template('course_dashboard.html', courses = courses)
+
+@app.route('/coreq')
+def courseDashboard():
+    courses = session.query(Coreq).limit(10).all()
+    return render_template('course_dashboard.html', courses = courses)
+
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

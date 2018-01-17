@@ -19,6 +19,7 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+
 # Database entries for new categories or movies.
 dept1 = Departments(code="CET", name="Comp Eng")
 
@@ -30,15 +31,30 @@ dept2 = Departments(code="EMT", name="Electromech Eng")
 session.add(dept2)
 session.commit()
 
-program1 = Courses(name="EMT 1111")
+course1 = Courses(name="EMT 1111", dept_code = "EMT")
+
+session.add(course1)
+session.commit()
+
+course2 = Courses(name="CET 3645", dept_code = "CET")
+
+session.add(course2)
+session.commit()
+
+program1 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology")
 
 session.add(program1)
 session.commit()
 
-program2 = Courses(name="CET 3645")
+prereq1 = Prereq(course_code="EM1220", prereq_code="EMT1120")
 
-session.add(program2)
+session.add(prereq1)
+session.commit()
+
+coreq1 = Coreq(course_code="EM1150", coreq_code="MAT1175")
+
+session.add(coreq1)
 session.commit()
 
 
-print "added items!"
+print ("added items!")
