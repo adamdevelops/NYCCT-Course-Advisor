@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
 
@@ -35,11 +35,11 @@
 <div class="">
 
 		<!-- Categories menu for all program categories -->
-			Courses
-				{% for course in courses %}
+			Departments
+				{% for dept in depts %}
 					<a href = ""> <!-- edit later -->
 							<div class="movies-list">
-									<h3>{{course.name}}</h3>
+									<h3>{{dept.name}}</h3>
 								</div>
 					</a>
 				{% endfor %}

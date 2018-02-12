@@ -1,24 +1,8 @@
-from flask import Flask, render_template, request, redirect, jsonify, url_for, flash
-from sqlalchemy import create_engine, asc
-from sqlalchemy.orm import sessionmaker
-from database_setup import Programs, Base, Courses, Departments
-from flask import session as login_session
-import random
-import string
-from oauth2client.client import flow_from_clientsecrets
-from oauth2client.client import FlowExchangeError
-import httplib2
-import json
-from flask import make_response
-import requests
-
-app = Flask(__name__)
-
-
-engine = create_engine('sqlite:///coursecatalog.db')
-Base.metadata.bind = engine
-DBSession = sessionmaker(bind=engine)
-session = DBSession()
+from flask import render_template, flash, redirect, request
+from app import app, db
+from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
+from app.models import Departments, Programs
 
 
 # App Routes
@@ -26,9 +10,8 @@ session = DBSession()
 @app.route('/')
 @app.route('/dashboard/')
 def creditDashboard():
-    courses = session.query(Courses).limit(10).all()
-    depts = session.query(Departments).all()
-    return render_template('dashboard.html', courses = courses, depts = depts)
+    depts = Departments.query.all()
+    return render_template('dashboard.html', depts = depts)
 
 @app.route('/depts')
 def deptDashboard():
@@ -48,18 +31,11 @@ def courseDashboard():
     return render_template('course_dashboard.html', courses = courses)
 
 @app.route('/prereq')
-def courseDashboard():
+def prereqDashboard():
     courses = session.query(Prereq).limit(10).all()
     return render_template('course_dashboard.html', courses = courses)
 
 @app.route('/coreq')
-def courseDashboard():
+def coreqDashboard():
     courses = session.query(Coreq).limit(10).all()
     return render_template('course_dashboard.html', courses = courses)
-
-
-
-if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
-    app.debug = True
-    app.run(host='0.0.0.0', port=5000)

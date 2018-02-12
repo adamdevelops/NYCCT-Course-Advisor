@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
 
@@ -29,18 +29,17 @@
 
 
 
-<section class="col-md-12"> <h2>PreReq Courses</h2></section>
+<section class="col-md-12"> <h2>Required Courses</h2></section>
 
 
 <div class="">
 
 		<!-- Categories menu for all program categories -->
-			Courses
-				{% for course in courses %}
+			Programs
+				{% for prog in progs %}
 					<a href = ""> <!-- edit later -->
 							<div class="movies-list">
-									<h3>{{course.course_code}}</h3>
-                  <h3>{{course.prereq_code}}</h3>
+									<h3>{{prog.name}}</h3>
 								</div>
 					</a>
 				{% endfor %}

@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
 
@@ -29,7 +29,7 @@
 
 
 
-<section class="col-md-12"> <h2>CoReq Courses</h2></section>
+<section class="col-md-12"> <h2>Required Courses</h2></section>
 
 
 <div class="">
@@ -39,8 +39,7 @@
 				{% for course in courses %}
 					<a href = ""> <!-- edit later -->
 							<div class="movies-list">
-                <h3>{{course.course_code}}</h3>
-                <h3>{{course.coreq_code}}</h3>
+									<h3>{{course.name}}</h3>
 								</div>
 					</a>
 				{% endfor %}

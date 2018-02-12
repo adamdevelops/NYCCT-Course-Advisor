@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
 
@@ -26,23 +26,41 @@
 	  {% endwith %}
 	</div>
 
+	<div class="col-md-1 padding-none">
+			<a href="{{ url_for('deptDashboard') }}">
+				<button class="btn btn-default">
+					<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Dept
+				</button>
+			</a>
+		</div>
 
 
+		<section> <h2>Required Courses</h2></section>
 
-<section class="col-md-12"> <h2>Required Courses</h2></section>
+	</div>
 
-
-<div class="">
+<div>
 
 		<!-- Categories menu for all program categories -->
-			Programs
-				{% for prog in progs %}
-					<a href = ""> <!-- edit later -->
-							<div class="movies-list">
-									<h3>{{prog.name}}</h3>
-								</div>
-					</a>
+		<div class="col-md-2">
+			Departments
+			<ul>
+				{% for dept in depts %}
+					<a href=""><li>{{dept.name}}</li></a>
 				{% endfor %}
+			</ul>
+		</div>
+
+		<!-- <div class="col-md-10 ">
+		{% for course in courses %}
+			<a href = ""> -->
+					<!-- <div class="col-md-2"></div> -->
+					<!-- <div class="movies-list">
+							<h3>{{course.name}}</h3>
+						</div>
+			</a>
+		{% endfor %}
+		</div> -->
 
 
 	</div>
