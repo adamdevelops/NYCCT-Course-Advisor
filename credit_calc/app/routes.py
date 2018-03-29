@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request
 from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-from app.models import Departments, Programs
+from app.models import Departments, Programs, Courses
 
 
 # App Routes
@@ -11,12 +11,15 @@ from app.models import Departments, Programs
 @app.route('/dashboard/')
 def creditDashboard():
     depts = Departments.query.all()
-    return render_template('dashboard.html', depts = depts)
+    progs = Courses.query.all()
+    pros = Programs.query.all()
+    return render_template('dashboard.html', depts = depts, courses = progs, pros = pros)
 
 @app.route('/depts')
 def deptDashboard():
-    courses = session.query(Courses).limit(10).all()
-    depts = session.query(Departments).all()
+    courses = Courses.query.all()
+    depts = Departments.query.all()
+    pros = Programs.query.all()
     return render_template('departments_dashboard.html', courses = courses, depts = depts)
 
 @app.route('/programs')

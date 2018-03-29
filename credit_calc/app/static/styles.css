@@ -111,9 +111,10 @@ h3 {
 .divider.green {
 	background-color: #9FB80A;
 }
+
 .banner.main {
 	height: 150px;
-	background: url("/static/citytech_logo.png");
+	/* background: url("/static/citytech_logo.png"); */
 	background-position: right;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -129,15 +130,43 @@ h3 {
 .banner h1 {
 	margin: 45px 0;
 }
- .movies-list {
+.login{
+	position: relative;
+	float: right;
+}
+
+.button-edit{
+	opacity: 0;
+  transition: opacity .35s ease;
+	display: inline-block;
+	float: right;
+}
+
+.button-delete{
+	opacity: 0;
+  transition: opacity .65s ease;
+	display: inline-block;
+	float: right;
+}
+
+.movies-list {
  	background-color: #F0F0F0;
  	padding: 20px;
 	border-style: solid;
   border-color: #D3D3D3;
  }
- .movies-list:hover {
+.movies-list:hover {
  	background-color: #0ab2b8;
  	padding: 20px;
+}
+
+.movies-list:hover .button-edit{
+	 opacity: 1;
+}
+
+.movies-list:hover .button-delete{
+	 opacity: 1;
+
 }
 
 .categories{
@@ -149,6 +178,13 @@ h3 {
 	position: absolute;
 }
 
+.button-dept{
+	position: absolute;
+	float: right;
+}
+
+
+
 #switch {
   height:50px;
   width:50px;
@@ -159,15 +195,7 @@ h3 {
   margin-left: 148px; /* Move it 148px to the right of the horizontal center, placing it over the lightswitch */
  }
 
-.menu-item {
-	background: #F0F0F0;
-	padding: 20px;
-	margin: 20px;
-	margin-left: -20px;
-}
-.menu-price {
-	font-weight: 700;
-}
+
 .creator {
 	padding-right: 20px;
 	margin-top: -20px;

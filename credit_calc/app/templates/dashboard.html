@@ -2,16 +2,7 @@
 {% block content %}
 {% include "header.html" %}
 
-<!-- Banner for the page -->
-	<div class="row divider blue">
-		<div class="col-md-12"></div>
-	</div>
-	<div class="row banner main">
-		<div class="col-md-1"></div>
-		<div class="col-md-11 padding-none">
-			<h1>CityTech Credit Tracker</h1>
-		</div>
-	</div>
+
 
 <!-- Flash message that shows messages of the CRUD actions done within the website -->
 	<div class = 'flash'>
@@ -26,13 +17,7 @@
 	  {% endwith %}
 	</div>
 
-	<div class="col-md-1 padding-none">
-			<a href="{{ url_for('deptDashboard') }}">
-				<button class="btn btn-default">
-					<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Dept
-				</button>
-			</a>
-		</div>
+
 
 
 		<section> <h2>Required Courses</h2></section>
@@ -40,28 +25,58 @@
 	</div>
 
 <div>
-
 		<!-- Categories menu for all program categories -->
-		<div class="col-md-2">
+		<!-- <div class="col-md-2">
 			Departments
 			<ul>
 				{% for dept in depts %}
 					<a href=""><li>{{dept.name}}</li></a>
 				{% endfor %}
 			</ul>
-		</div>
+		</div> -->
 
-		<!-- <div class="col-md-10 ">
+
+		<div class="col-md-2 padding-none">
+				<a href="{{ url_for('deptDashboard') }}">
+					<button class="btn btn-default">
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Dept
+					</button>
+				</a>
+				<div>
+				Departments:
+				{% for dept in depts %}
+					{{dept.id}}
+					{{dept.name}}
+					{%for p in dept.progs.all()%}
+						 {{p.id}},
+
+					{%endfor%}
+				 {%endfor%}
+
+
+				 <div>
+					 Programs:
+					 {% for pro in pros %}
+						{{pro.id}}
+						{{pro.name}}
+						{{pro.dept_id}},
+					 {%endfor%}
+
+					</div>
+				</div>
+			</div>
+
+
+		<div class="col-md-10 ">
 		{% for course in courses %}
-			<a href = ""> -->
-					<!-- <div class="col-md-2"></div> -->
-					<!-- <div class="movies-list">
+			<a href = "">
+					<div class="col-md-2"></div>
+					<div class="movies-list">
 							<h3>{{course.name}}</h3>
 						</div>
 			</a>
 		{% endfor %}
-		</div> -->
-
-
+		</div>
 	</div>
+
 {% endblock %}

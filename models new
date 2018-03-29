@@ -8,8 +8,8 @@ from app import login
 
 class Departments(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    code = db.Column(db.String(8), nullable=False)
-    name = db.Column(db.String(50), nullable=False)
+    code = db.Column(db.String(80), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
     progs = db.relationship('Programs', backref='departments', lazy='dynamic')
     courses = db.relationship('Courses', backref='departments', lazy='dynamic')
 #    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
@@ -28,9 +28,9 @@ class Departments(UserMixin, db.Model):
 
 class Programs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    code = db.Column(db.String(8), nullable=False)
-    name = db.Column(db.String(50), nullable=False)
-    degree = db.Column(db.String(50), nullable=False)
+    code = db.Column(db.String(80), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    degree = db.Column(db.String(80), nullable=False)
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
     courses = db.relationship('Courses', backref='programs', lazy='dynamic')
     prereq = db.relationship('Prereq', backref='programs', lazy='dynamic')
@@ -48,11 +48,12 @@ class Programs(db.Model):
 
 class Courses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    code = db.Column(db.String(8), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    code = db.Column(db.String(80), nullable=False)
     credits = db.Column(db.Integer, nullable=False)
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
     progs_id = db.Column(db.Integer, db.ForeignKey('programs.id'))
+#creditDashboard
 
     @property
     def serialize(self):
@@ -65,8 +66,8 @@ class Courses(db.Model):
 
 class Prereq(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    course_code = db.Column(db.String(8), nullable=False)
-    prereq_code = db.Column(db.String(8), nullable=False)
+    course_code = db.Column(db.String(80), nullable=False)
+    prereq_code = db.Column(db.String(80), nullable=False)
     prog_id = db.Column(db.String(80), db.ForeignKey('programs.id'))
 
 
@@ -82,8 +83,8 @@ class Prereq(db.Model):
 
 class Coreq(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    prerequiste = db.Column(db.String(80), nullable=False)
     course_code = db.Column(db.String(8), nullable=False)
-    coreq_code = db.Column(db.String(8), nullable=False)
     prog_id = db.Column(db.String(80), db.ForeignKey('programs.id'))
 
 
