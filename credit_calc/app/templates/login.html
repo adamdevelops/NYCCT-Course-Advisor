@@ -2,10 +2,6 @@
 {% block content %}
 {% include "header.html" %}
 
-<!-- Banner for the page -->
-	<div class="row divider blue">
-		<div class="col-md-12"></div>
-	</div>
 
 
 <!-- Flash message that shows messages of the CRUD actions done within the website -->
@@ -21,24 +17,17 @@
 	  {% endwith %}
 	</div>
 
+	<section> <h2>Login</h2></section>
+
+	<form action="{{ url_for('editMovies', category = movie.category, movie_id = movie.id)}}" method = "post">
+					<div class="form-group">
+
+	<label for="name">Name:</label>
+							<input type ="text" maxlength="80" class="form-control" name="username" >
+
+	<label for="name">Password:</label>
+							<input type ="text" maxlength="80" class="form-control" name="password" >
 
 
 
-<section class="col-md-12"> <h2>Required Courses</h2></section>
-
-
-<div class="">
-
-		<!-- Categories menu for all program categories -->
-			Courses
-				{% for course in courses %}
-					<a href = ""> <!-- edit later -->
-							<div class="movies-list">
-									<h3>{{course.name}}</h3>
-								</div>
-					</a>
-				{% endfor %}
-
-
-	</div>
 {% endblock %}

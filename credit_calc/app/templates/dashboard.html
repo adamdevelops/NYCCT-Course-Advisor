@@ -69,7 +69,7 @@
 
 		<div class="col-md-10 ">
 		{% for course in courses %}
-			<a href = "">
+			<a href = " {{ url_for('courseDashboard') }}">
 					<div class="col-md-2"></div>
 					<div class="movies-list">
 							<h3>{{course.name}}</h3>

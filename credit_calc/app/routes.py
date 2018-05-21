@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, request
+from flask import render_template, flash, redirect, request, url_for
 from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
@@ -24,13 +24,13 @@ def deptDashboard():
 
 @app.route('/programs')
 def progDashboard():
-    programs = session.query(Programs).limit(10).all()
-    depts = session.query(Departments).all()
+    programs = Programs.query.all()
+    depts = Departments.query.all()
     return render_template('programs_dashboard.html', progs = programs, depts = depts)
 
 @app.route('/courses')
 def courseDashboard():
-    courses = session.query(Courses).limit(10).all()
+    courses = Courses.query.all()
     return render_template('course_dashboard.html', courses = courses)
 
 @app.route('/prereq')
@@ -42,3 +42,23 @@ def prereqDashboard():
 def coreqDashboard():
     courses = session.query(Coreq).limit(10).all()
     return render_template('course_dashboard.html', courses = courses)
+
+@app.route('/depts/edit/<int:dept_id>', methods=['GET', 'POST'])
+def editDeptForm(dept_id):
+    if request.method == 'POST':
+        editedDept = Departments.query.filter_by(id=dept_id).one()
+        editedDept.name = request.form['name']
+        editedDept.code = request.form['code']
+        db.session.add(editedDept)
+        flash('%s was Successfully Edited' % editedDept.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        editedDept = Departments.query.filter_by(id=dept_id).one()
+        return render_template('editdept_form.html', dept = editedDept)
+
+
+
+@app.route('/login')
+def loginForm():
+    return render_template('login.html')
