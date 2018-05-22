@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="col-md-6"><section class=""><h2>Required Courses</h2></section></div>
 	<div class="col-md-6">
-		<a href="{{ url_for('deptDashboard') }}" >
+		<a href="{{ url_for('createDeptForm') }}" >
 			<button class="btn btn-default button-dept">
 				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Department
 			</button>
@@ -37,12 +37,12 @@
 					<a href = ""> <!-- edit later -->
 						<div class="movies-list">
 							<h3>{{dept.name}}</h3>
-									<a href="{{ url_for('deptDashboard') }}" >
+									<a href="{{ url_for('editDeptForm', dept_id = dept.id)}}" >
 										<button class="btn btn-default button-edit">
 											<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Edit
 										</button>
 									</a>
-									<a href="{{ url_for('deptDashboard') }}" >
+									<a href="{{ url_for('deleteDeptForm', dept_id = dept.id)}}" >
 										<button class="btn btn-default button-delete">
 											<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Delete
 										</button>
