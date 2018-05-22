@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+
+<!-- Flash message that shows messages of the CRUD actions done within the website -->
+
+
+
+	<form action="{{ url_for('editProgramForm', program_id = program.id)}}" method = "post">
+					<div class="form-group">
+
+							<label for="name">Name:</label>
+							<input type ="text" maxlength="80" class="form-control" name="name" value="{{program.name}}">
+
+							<label for="name">Code:</label>
+							<input type ="text" maxlength="80" class="form-control" name="code" value="{{program.code}}">
+
+							<label for="name">Degree:</label>
+							<input type ="text" maxlength="80" class="form-control" name="degree" value="{{program.degree}}">
+
+							<button type="submit" class="btn btn-default" id="submit" type="submit">
+
+							<span class="glyphicon glyphicon-film" aria-hidden="true"></span>Edit</button>
+
+					</div>
+	</form>
+
+
+
+{% endblock %}

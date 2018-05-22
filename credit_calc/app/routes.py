@@ -63,16 +63,102 @@ def deleteDeptForm(dept_id):
         deletedDept = Departments.query.filter_by(id=dept_id).one()
         return render_template('deletedept_form.html', dept = deletedDept)
 
+# Programs Dashboard
 @app.route('/programs')
 def progDashboard():
     programs = Programs.query.all()
     depts = Departments.query.all()
     return render_template('programs_dashboard.html', progs = programs, depts = depts)
 
+# CRUD routes for Programs
+@app.route('/programs/create', methods=['GET', 'POST'])
+def createProgramForm():
+    if request.method == 'POST':
+        name = request.form['name']
+        code = request.form['code']
+        degree = request.form['degree']
+        newProgram = Programs(name = name, code= code, degree = degree)
+        db.session.add(newProgram)
+        flash('%s was Successfully Created' % newProgram.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        return render_template('createprogram_form.html')
+
+@app.route('/programs/edit/<int:program_id>', methods=['GET', 'POST'])
+def editProgramForm(program_id):
+    if request.method == 'POST':
+        editedProgram = Programs.query.filter_by(id=program_id).one()
+        editedProgram.name = request.form['name']
+        editedProgram.code = request.form['code']
+        editedProgram.degree = request.form['degree']
+        db.session.add(editedProgram)
+        flash('%s was Successfully Edited' % editedProgram.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        editedProgram = Programs.query.filter_by(id=program_id).one()
+        return render_template('editprogram_form.html', program = editedProgram)
+
+@app.route('/programs/delete/<int:program_id>', methods=['GET', 'POST'])
+def deleteProgramForm(program_id):
+    if request.method == 'POST':
+        deletedProgram = Programs.query.filter_by(id=program_id).one()
+        db.session.delete(deletedProgram)
+        flash('%s was Successfully Deleted' % deletedProgram.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        deletedProgram = Programs.query.filter_by(id=program_id).one()
+        return render_template('deleteprogram_form.html', program = deletedProgram)
+
+# Course Dashboard
 @app.route('/courses')
 def courseDashboard():
     courses = Courses.query.all()
     return render_template('course_dashboard.html', courses = courses)
+
+# CRUD routes for Courses
+@app.route('/courses/create', methods=['GET', 'POST'])
+def createCourseForm():
+    if request.method == 'POST':
+        name = request.form['name']
+        code = request.form['code']
+        credits = request.form['credits']
+        newCourse = Courses(name = name, code= code, credits = int(credits))
+        db.session.add(newCourse)
+        flash('%s was Successfully Created' % newCourse.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        return render_template('createCourse_form.html')
+
+@app.route('/courses/edit/<int:course_id>', methods=['GET', 'POST'])
+def editCourseForm(course_id):
+    if request.method == 'POST':
+        editedCourse = Courses.query.filter_by(id=course_id).one()
+        editedCourse.name = request.form['name']
+        editedCourse.code = request.form['code']
+        editedCourse.credits = int(request.form['credits'])
+        db.session.add(editedCourse)
+        flash('%s was Successfully Edited' % editedCourse.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        editedCourse = Courses.query.filter_by(id=course_id).one()
+        return render_template('editCourse_form.html', course = editedCourse)
+
+@app.route('/courses/delete/<int:course_id>', methods=['GET', 'POST'])
+def deleteCourseForm(course_id):
+    if request.method == 'POST':
+        deletedCourse = Courses.query.filter_by(id=course_id).one()
+        db.session.delete(deletedCourse)
+        flash('%s was Successfully Deleted' % deletedCourse.name)
+        db.session.commit()
+        return redirect(url_for('creditDashboard'))
+    else:
+        deletedCourse = Courses.query.filter_by(id=course_id).one()
+        return render_template('deleteCourse_form.html', course = deletedCourse)
 
 @app.route('/prereq')
 def prereqDashboard():
