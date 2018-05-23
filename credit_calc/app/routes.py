@@ -118,7 +118,7 @@ def deleteProgramForm(program_id):
         deletedProgram = Programs.query.filter_by(id=program_id).one()
         return render_template('deleteprogram_form.html', program = deletedProgram)
 
-# Specific Department Page
+# Specific Programs Page
 @app.route('/programs/<int:prog_id>')
 def programDetail(prog_id):
     Program = Programs.query.filter_by(id=prog_id).one()
@@ -171,6 +171,12 @@ def deleteCourseForm(course_id):
     else:
         deletedCourse = Courses.query.filter_by(id=course_id).one()
         return render_template('deleteCourse_form.html', course = deletedCourse)
+
+# Specific Courses Page
+@app.route('/courses/<int:course_id>')
+def courseDetail(course_id):
+    Course = Courses.query.filter_by(id=course_id).one()
+    return render_template('course_detail.html', course = Course)
 
 @app.route('/prereq')
 def prereqDashboard():
