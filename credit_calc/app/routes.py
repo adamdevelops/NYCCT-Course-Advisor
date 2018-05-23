@@ -118,7 +118,11 @@ def deleteProgramForm(program_id):
         deletedProgram = Programs.query.filter_by(id=program_id).one()
         return render_template('deleteprogram_form.html', program = deletedProgram)
 
-
+# Specific Department Page
+@app.route('/programs/<int:prog_id>')
+def programDetail(prog_id):
+    Program = Programs.query.filter_by(id=prog_id).one()
+    return render_template('program_detail.html', program = Program)
 
 # Course Dashboard
 @app.route('/courses')
