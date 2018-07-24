@@ -15,6 +15,17 @@ def creditDashboard():
     pros = Programs.query.all()
     return render_template('dashboard.html', depts = depts, courses = progs, pros = pros)
 
+@app.route('/login', methods=['GET', 'POST'])
+def userLogin():
+    if request.method == 'POST':
+        name = request.form['name']
+        code = request.form['code']
+        # if username is not in database test case
+            #
+        return redirect(url_for('creditDashboard'))
+    else:
+        return render_template('createdept_form.html')
+
 # Departments Dashboard
 @app.route('/depts')
 def deptDashboard():
@@ -187,10 +198,6 @@ def prereqDashboard():
 def coreqDashboard():
     courses = session.query(Coreq).limit(10).all()
     return render_template('course_dashboard.html', courses = courses)
-
-
-
-
 
 @app.route('/login')
 def loginForm():

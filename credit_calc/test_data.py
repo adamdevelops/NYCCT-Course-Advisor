@@ -2,6 +2,14 @@ from app import app, db
 from app.models import Departments, Programs, Courses, Prereq, Coreq
 
 
+# Clear database first
+db.reflect()
+db.drop_all()
+
+# Create tables
+db.create_all()
+db.session.commit()
+
 # Database entries for new categories or movies.
 dept1 = Departments(code="CET", name="Comp Eng")
 
@@ -38,5 +46,14 @@ coreq1 = Coreq(course_code="EM1150", coreq_code="MAT1175")
 db.session.add(coreq1)
 db.session.commit()
 
-
 print ("added items!")
+
+######################
+# Adding EMT1111 course to EMT department via association table
+course1.course_department.append(dept2)
+
+# Printing Department that the course was assigned to
+for dep in course1.course_department:
+    print (dep.name)
+    print (dep.code)
+    print (dep.id)
