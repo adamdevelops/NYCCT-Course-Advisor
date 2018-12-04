@@ -19,7 +19,7 @@
 
 	<section> <h2>Login</h2></section>
 
-	<form action="{{ url_for('editMovies', category = movie.category, movie_id = movie.id)}}" method = "post">
+	<form action="{{ url_for('userLogin', user = user.username, pass = user.password)}}" method = "post">
 					<div class="form-group">
 
 	<label for="name">Name:</label>

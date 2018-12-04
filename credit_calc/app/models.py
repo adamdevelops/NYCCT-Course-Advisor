@@ -5,13 +5,17 @@ from flask_login import UserMixin
 from hashlib import md5
 from app import login
 
+coursedept = db.Table('coursedept',
+    db.Column('dept_id', db.Integer, db.ForeignKey('departments.id')),
+    db.Column('course_id', db.Integer, db.ForeignKey('courses.id'))
+)
 
 class Departments(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(8), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     progs = db.relationship('Programs', backref='departments', lazy='dynamic')
-    courses = db.relationship('Courses', backref='departments', lazy='dynamic')
+    course_depts = db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
 #    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
 #    coreq = db.relationship('Coreq', backref='departments', lazy='dynamic')
 

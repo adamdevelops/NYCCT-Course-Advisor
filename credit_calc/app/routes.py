@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request, url_for
 from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-from app.models import Departments, Programs, Courses
+from app.models import Departments, Programs, Courses, coursedept
 
 
 # App Routes
@@ -14,6 +14,17 @@ def creditDashboard():
     progs = Courses.query.all()
     pros = Programs.query.all()
     return render_template('dashboard.html', depts = depts, courses = progs, pros = pros)
+
+@app.route('/login', methods=['GET', 'POST'])
+def userLogin():
+    if request.method == 'POST':
+        name = request.form['name']
+        code = request.form['code']
+        # if username is not in database test case
+            #
+        return redirect(url_for('creditDashboard'))
+    else:
+        return render_template('createdept_form.html')
 
 # Departments Dashboard
 @app.route('/depts')
@@ -176,7 +187,8 @@ def deleteCourseForm(course_id):
 @app.route('/courses/<int:course_id>')
 def courseDetail(course_id):
     Course = Courses.query.filter_by(id=course_id).one()
-    return render_template('course_detail.html', course = Course)
+    CourseDepts = Courses.query.join(coursedept, (coursedept.c.course_id == Course.id)).filter(coursedept.c.user_id == Course.course_department)
+    return render_template('course_detail.html', course = Course, coursedepts = CourseDepts)
 
 @app.route('/prereq')
 def prereqDashboard():
@@ -187,10 +199,6 @@ def prereqDashboard():
 def coreqDashboard():
     courses = session.query(Coreq).limit(10).all()
     return render_template('course_dashboard.html', courses = courses)
-
-
-
-
 
 @app.route('/login')
 def loginForm():
