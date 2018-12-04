@@ -64,6 +64,7 @@ db.session.commit()
 course3.course_department.append(dept2)
 db.session.commit()
 
+
 depts = Departments.course_department.query(dept_id='1')
 print (depts)
 
