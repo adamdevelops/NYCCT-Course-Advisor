@@ -47,6 +47,7 @@
 				{% for dept in depts %}
 					{{dept.id}}
 					{{dept.name}}
+					{{dept.course_depts[0].name}}
 					{%for p in dept.progs.all()%}
 						 {{p.id}},
 
@@ -72,7 +73,7 @@
 			<a href = " {{ url_for('courseDashboard') }}">
 					<div class="col-md-2"></div>
 					<div class="movies-list">
-							<h3>{{course.name}}</h3>
+							<h3>{{course.name}}</h3> <h3>Dept: {{course.dept.name}}</h3>
 						</div>
 			</a>
 		{% endfor %}
