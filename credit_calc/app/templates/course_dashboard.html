@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 {% block content %}
 {% include "header.html" %}
@@ -41,3 +42,48 @@
 
 	</div>
 {% endblock %}
+=======
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<!-- Banner for the page -->
+	<div class="row divider blue">
+		<div class="col-md-12"></div>
+	</div>
+
+
+<!-- Flash message that shows messages of the CRUD actions done within the website -->
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	    {% endif %}
+	  {% endwith %}
+	</div>
+
+
+
+
+<section class="col-md-12"> <h2>Required Courses</h2></section>
+
+
+<div class="">
+
+			Courses
+				{% for course in courses %}
+					<a href = "{{ url_for('courseDetail', course_id = course.id) }}">
+							<div class="movies-list">
+									<h3>{{course.name}}</h3>
+								</div>
+					</a>
+				{% endfor %}
+
+
+	</div>
+{% endblock %}
+>>>>>>> ccf497a6224518b3979b64b63f6b0fcb6b3e5591
