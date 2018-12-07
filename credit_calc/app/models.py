@@ -15,7 +15,8 @@ class Departments(UserMixin, db.Model):
     code = db.Column(db.String(8), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     progs = db.relationship('Programs', backref='departments', lazy='dynamic')
-    course_depts = db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
+    course_depts = db.relationship('Courses', backref='dept')
+    # db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
 #    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
 #    coreq = db.relationship('Coreq', backref='departments', lazy='dynamic')
 
@@ -26,7 +27,8 @@ class Departments(UserMixin, db.Model):
         return {
             'name': self.name,
             'id': self.id,
-            'code': self.code
+            'code': self.code,
+            'course_depts':self.course_depts
         }
 
 
@@ -63,7 +65,8 @@ class Courses(db.Model):
         """Return object data in easily serializeable format"""
         return {
             'name': self.name,
-            'id': self.id
+            'id': self.id,
+            'dept_id': self.dept_id
         }
 
 
@@ -104,3 +107,10 @@ class Coreq(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(80), nullable=False)
 #     email = db.Column(db.String(80), nullable=False)
+
+
+# Database Relationships
+# One to Many
+# Depts -> Course, Program -> Many Courses
+# Many to Many
+# Courses -> Prereq, Courses -> Coreq

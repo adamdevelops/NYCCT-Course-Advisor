@@ -21,17 +21,17 @@ dept2 = Departments(code="EMT", name="Electromech Eng")
 db.session.add(dept2)
 db.session.commit()
 
-course1 = Courses(name="EMT 1111", code="EMT", credits=3)
+course1 = Courses(name="EMT 1111", code="EMT", credits=3, dept=dept2)
 
 db.session.add(course1)
 db.session.commit()
 
-course2 = Courses(name="CET 3645", code="CET", credits=3)
+course2 = Courses(name="CET 3645", code="CET", credits=3, dept=dept1)
 
 db.session.add(course2)
 db.session.commit()
 
-course3 = Courses(name="EMT 1250", code="EMT", credits=3)
+course3 = Courses(name="EMT 1250", code="EMT", credits=3, dept=dept2)
 
 db.session.add(course3)
 db.session.commit()
@@ -54,24 +54,17 @@ db.session.commit()
 print ("added items!")
 
 ######################
-# Adding EMT1111 course to EMT department via association table
-course1.course_department.append(dept2)
-db.session.commit()
-# Adding CET3645 course to CET department via association table
-course2.course_department.append(dept1)
-db.session.commit()
-# Adding EMT1250 course to EMT department via association table
-course3.course_department.append(dept2)
-db.session.commit()
+# Query for departments with EMT code and print courses under that department
+dept = Departments.query.filter_by(code='EMT').first()
+print (dept)
+print (dept.course_depts)
+print (dept.course_depts[0].name)
 
-
-depts = Departments.course_department.query(dept_id='1')
-print (depts)
-
-
+# Display Department for Course1
+print(course1.dept.name)
 
 # Printing Department that the course was assigned to
-for dep in course1.course_department:
-    print (dep.name)
-    print (dep.code)
-    print (dep.id)
+# for dep in course1.dept:
+#     print (dep.name)
+#     print (dep.code)
+#     print (dep.id)

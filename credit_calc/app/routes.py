@@ -11,9 +11,10 @@ from app.models import Departments, Programs, Courses, coursedept
 @app.route('/dashboard/')
 def creditDashboard():
     depts = Departments.query.all()
+    course_depts = Departments.course_depts.query.all()
     progs = Courses.query.all()
     pros = Programs.query.all()
-    return render_template('dashboard.html', depts = depts, courses = progs, pros = pros)
+    return render_template('dashboard.html', depts = depts, courses = progs, pros = pros, cdepts = coures_depts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def userLogin():
