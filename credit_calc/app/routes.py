@@ -148,7 +148,8 @@ def createCourseForm():
         name = request.form['name']
         code = request.form['code']
         credits = request.form['credits']
-        dept = request.form['dept']
+        dept_id = request.form['department']
+        dept = Departments.query.filter_by(id=dept_id).one()
         newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
         db.session.add(newCourse)
         flash('%s was Successfully Created' % newCourse.name)

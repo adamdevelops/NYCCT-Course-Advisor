@@ -21,9 +21,9 @@
 							<input type ="text" maxlength="80" class="form-control" name="credits">
 
 							<label for="name">Department:</label>
-							<select name="dept">
+							<select name="department">
 								{% for dept in depts %}
-			 						<option value="{{dept.name}}">{{dept.name}}</option>
+			 						<option value="{{dept.id}}">{{dept.name}}</option>
 		 					 	{%endfor%}
 						  </select>
 
