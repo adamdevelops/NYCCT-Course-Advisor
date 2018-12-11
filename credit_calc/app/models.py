@@ -14,7 +14,7 @@ class Departments(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(8), nullable=False)
     name = db.Column(db.String(50), nullable=False)
-    progs = db.relationship('Programs', backref='departments', lazy='dynamic')
+    progs = db.relationship('Programs', backref='dept')
     course_depts = db.relationship('Courses', backref='dept')
     # db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
 #    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
@@ -39,8 +39,8 @@ class Programs(db.Model):
     degree = db.Column(db.String(50), nullable=False)
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
     courses = db.relationship('Courses', backref='programs', lazy='dynamic')
-    prereq = db.relationship('Prereq', backref='programs', lazy='dynamic')
-    coreq = db.relationship('Coreq', backref='programs', lazy='dynamic')
+    # prereq = db.relationship('Prereq', backref='programs', lazy='dynamic')
+    # coreq = db.relationship('Coreq', backref='programs', lazy='dynamic')
 
 
     @property
@@ -51,6 +51,10 @@ class Programs(db.Model):
             'id': self.id,
         }
 
+prereq = db.Table('prereq',
+    db.Column('course_id', db.Integer, db.ForeignKey('courses.id')),
+    db.Column('prereq_id', db.Integer, db.ForeignKey('courses.id'))
+)
 
 class Courses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,6 +63,20 @@ class Courses(db.Model):
     credits = db.Column(db.Integer, nullable=False)
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
     progs_id = db.Column(db.Integer, db.ForeignKey('programs.id'))
+    prereqs = db.relationship(
+        'Courses', secondary=prereq,
+        primaryjoin=(prereq.c.course_id == id),
+        secondaryjoin=(prereq.c.prereq_id == id),
+        backref=db.backref('prereq', lazy='dynamic'), lazy='dynamic')
+
+    def add_prereq(self, course):
+        if not self.is_preq(course):
+            self.prereqs.append(course)
+
+    def is_preq(self, course):
+        return self.prereqs.filter(
+            prereq.c.prereq_id == course.id).count() > 0
+            # for course ID see if the selected course is already a prereq
 
     @property
     def serialize(self):
@@ -70,21 +88,20 @@ class Courses(db.Model):
         }
 
 
-class Prereq(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    course_code = db.Column(db.String(8), nullable=False)
-    prereq_code = db.Column(db.String(8), nullable=False)
-    prog_id = db.Column(db.String(80), db.ForeignKey('programs.id'))
-
-
-    @property
-    def serialize(self):
-        """Return object data in easily serializeable format"""
-        return {
-            'name': self.name,
-            'id': self.id,
-            'prog_id': self.prog_id
-        }
+# class Prereq(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     course_code = db.Column(db.String(8), nullable=False)
+#     prereq_code = db.Column(db.String(8), nullable=False)
+#     prog_id = db.Column(db.String(80), db.ForeignKey('programs.id'))
+#
+#     @property
+#     def serialize(self):
+#         """Return object data in easily serializeable format"""
+#         return {
+#             'name': self.name,
+#             'id': self.id,
+#             'prog_id': self.prog_id
+#         }
 
 
 class Coreq(db.Model):

@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import Departments, Programs, Courses, Prereq, Coreq
+from app.models import Departments, Programs, Courses, Coreq
 
 
 # Clear database first
@@ -36,15 +36,25 @@ course3 = Courses(name="EMT 1250", code="EMT", credits=3, dept=dept2)
 db.session.add(course3)
 db.session.commit()
 
-program1 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology", degree='AAS', departments=dept2)
+course4 = Courses(name="EMT 1120", code="EMT", credits=3, dept=dept2)
+
+db.session.add(course4)
+db.session.commit()
+
+program1 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology", degree='AAS', dept=dept2)
 
 db.session.add(program1)
 db.session.commit()
 
-prereq1 = Prereq(course_code="EM1220", prereq_code="EMT1120")
+program2 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology", degree='AAS', dept=dept1)
 
-db.session.add(prereq1)
+db.session.add(program1)
 db.session.commit()
+
+# prereq1 = Prereq(course_code="EM1250", prereq_code="EMT1120")
+#
+# db.session.add(prereq1)
+# db.session.commit()
 
 coreq1 = Coreq(course_code="EM1150", coreq_code="MAT1175")
 
@@ -63,8 +73,11 @@ print (dept.course_depts[0].name)
 # Display Department for Course1
 print(course1.dept.name)
 
-# Printing Department that the course was assigned to
-# for dep in course1.dept:
-#     print (dep.name)
-#     print (dep.code)
-#     print (dep.id)
+# Add prereq course to Database
+course3.add_prereq(course4)
+course3.add_prereq(course1)
+course2.add_prereq(course3)
+db.session.commit()
+
+# Course 3 EMT1250 should have prereqs of EMT1111, EMT1120
+# Course 2 CET3645 should have prereqs of EMT1250
