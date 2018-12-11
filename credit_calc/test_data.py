@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import Departments, Programs, Courses, Coreq
+from app.models import Departments, Programs, Courses
 
 
 # Clear database first
@@ -56,10 +56,10 @@ db.session.commit()
 # db.session.add(prereq1)
 # db.session.commit()
 
-coreq1 = Coreq(course_code="EM1150", coreq_code="MAT1175")
-
-db.session.add(coreq1)
-db.session.commit()
+# coreq1 = Coreq(course_code="EM1150", coreq_code="MAT1175")
+#
+# db.session.add(coreq1)
+# db.session.commit()
 
 print ("added items!")
 
@@ -77,6 +77,7 @@ print(course1.dept.name)
 course3.add_prereq(course4)
 course3.add_prereq(course1)
 course2.add_prereq(course3)
+course1.add_coreq(course4)
 db.session.commit()
 
 # Course 3 EMT1250 should have prereqs of EMT1111, EMT1120

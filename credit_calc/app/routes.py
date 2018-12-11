@@ -190,6 +190,7 @@ def deleteCourseForm(course_id):
 @app.route('/courses/<int:course_id>')
 def courseDetail(course_id):
     Course = Courses.query.filter_by(id=course_id).one()
+    # prereqCourses = Courses.all_prereqs()
     return render_template('course_detail.html', course = Course)
 
 @app.route('/prereq')
