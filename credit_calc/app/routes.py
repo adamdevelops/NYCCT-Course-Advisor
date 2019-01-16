@@ -149,13 +149,17 @@ def createCourseForm():
         code = request.form['code']
         credits = request.form['credits']
         dept_id = request.form['department']
-        course_id = request.form['course']
+        preq_course_id = request.form['preq_course']
+        coreq_course_id = request.form['coreq_course']
         dept = Departments.query.filter_by(id=dept_id).one()
-        course = Courses.query.filter_by(id=course_id).one()
+        preq_course = Courses.query.filter_by(id=preq_course_id).one()
+        coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
         # Create new Course object to database
         newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
-        # Add prereq to course object
-        newCourse.add_prereq(course)
+        # Add Prereq course to new Course object
+        newCourse.add_prereq(preq_course)
+        newCourse.add_coreq(coreq_course)
+        # Add Course object to database
         db.session.add(newCourse)
         flash('%s was Successfully Created' % newCourse.name)
         db.session.commit()

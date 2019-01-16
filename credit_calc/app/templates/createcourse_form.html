@@ -30,7 +30,16 @@
               <br />
 
               <label for="name">Prereq:</label>
-							<select name="course">
+							<select name="preq_course">
+								{% for course in courses %}
+			 						<option value="{{course.id}}">{{course.name}}</option>
+		 					 	{%endfor%}
+						  </select>
+
+              <br />
+
+              <label for="name">Coreq:</label>
+							<select name="coreq_course">
 								{% for course in courses %}
 			 						<option value="{{course.id}}">{{course.name}}</option>
 		 					 	{%endfor%}

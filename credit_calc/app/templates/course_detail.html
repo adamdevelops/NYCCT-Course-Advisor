@@ -50,6 +50,17 @@
 
 			</h6>
 
+			<h6>Corequistes:
+
+				{% for coreq in course.coreqs %}
+					<li>
+						{{coreq.id}},
+						{{coreq.name}}
+						</li>
+				{% endfor %}
+
+			</h6>
+
 
 	</div>
 {% endblock %}
