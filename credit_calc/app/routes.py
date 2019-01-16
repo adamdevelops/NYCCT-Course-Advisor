@@ -149,15 +149,19 @@ def createCourseForm():
         code = request.form['code']
         credits = request.form['credits']
         dept_id = request.form['department']
+        course_id = request.form['course']
         dept = Departments.query.filter_by(id=dept_id).one()
+        course = Courses.query.filter_by(id=course_id).one()
         newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
+        newCourse.add_prereq(course)
         db.session.add(newCourse)
         flash('%s was Successfully Created' % newCourse.name)
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
         depts = Departments.query.all()
-        return render_template('createCourse_form.html', depts = depts)
+        courses = Courses.query.all()
+        return render_template('createCourse_form.html', depts = depts, courses = courses)
 
 @app.route('/courses/edit/<int:course_id>', methods=['GET', 'POST'])
 def editCourseForm(course_id):

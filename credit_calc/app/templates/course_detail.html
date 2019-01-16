@@ -39,9 +39,16 @@
 
 			<h6>Dept Name: {{course.dept.name}}</h6>
 
-			<h6>Prerequiste Courses: {{course.prereqs.prereq_id}}</h6>
+			<h6>Prerequistes:
 
+				{% for prereq in course.prereqs %}
+					<li>
+						{{prereq.id}},
+						{{prereq.name}}
+						</li>
+				{% endfor %}
 
+			</h6>
 
 
 	</div>

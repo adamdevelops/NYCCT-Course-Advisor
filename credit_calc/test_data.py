@@ -33,8 +33,12 @@ db.session.commit()
 
 course3 = Courses(name="EMT 1250", code="EMT", credits=3, dept=dept2)
 
-db.session.add(course3)
-db.session.commit()
+# db.session.add(course3)
+# db.session.commit()
+
+# Courses('node1_EMT1120', parent=course3)
+# db.session.add(course3)
+# db.session.commit()
 
 course4 = Courses(name="EMT 1120", code="EMT", credits=3, dept=dept2)
 
@@ -50,6 +54,8 @@ program2 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology"
 
 db.session.add(program1)
 db.session.commit()
+
+
 
 # prereq1 = Prereq(course_code="EM1250", prereq_code="EMT1120")
 #
@@ -79,6 +85,8 @@ course3.add_prereq(course1)
 course2.add_prereq(course3)
 course1.add_coreq(course4)
 db.session.commit()
+
+print (course3.prereqs)
 
 # Course 3 EMT1250 should have prereqs of EMT1111, EMT1120
 # Course 2 CET3645 should have prereqs of EMT1250

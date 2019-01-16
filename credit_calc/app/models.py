@@ -65,6 +65,7 @@ coreq = db.Table('coreq',
 
 class Courses(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    parent_id = db.Column(db.Integer, db.ForeignKey('courses.id'))
     name = db.Column(db.String(50), nullable=False)
     code = db.Column(db.String(8), nullable=False)
     credits = db.Column(db.Integer, nullable=False)
@@ -80,6 +81,10 @@ class Courses(db.Model):
         primaryjoin=(coreq.c.course_id == id),
         secondaryjoin=(coreq.c.coreq_id == id),
         backref=db.backref('coreq', lazy='dynamic'), lazy='dynamic')
+    children = db.relationship("Courses",
+                backref=db.backref('parent', remote_side=[id])
+            )
+
 
     # Add Prereq course to a Course
     def add_prereq(self, course):
@@ -91,9 +96,9 @@ class Courses(db.Model):
         return self.prereqs.filter(
             prereq.c.prereq_id == course.id).count() > 0
 
-    # def all_prereqs(self, course):
-    #     return self.prereqs.filter(
-    #         prereq.c.course_id == course.id).query().all()
+     # def all_prereqs(self, course):
+     #     return self.prereqs.filter(
+     #         prereq.c.course_id == course.id).query().all()
 
     # Add Coreq course to a Course
     def add_coreq(self, course):
@@ -104,6 +109,10 @@ class Courses(db.Model):
     def is_coreq(self, course):
         return self.coreqs.filter(
             coreq.c.coreq_id == course.id).count() > 0
+
+    # def __init__(self, name, parent=None):
+    #     self.name = name
+    #     self.parent = parent
 
     @property
     def serialize(self):
@@ -116,39 +125,6 @@ class Courses(db.Model):
 
 # query_prereqs = Courses.query.join(prereq).
 #     filter(prereq.c.courses_id == Courses.id and prereq.c.prereq_id == Courses.id).all()
-
-
-# class Prereq(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     course_code = db.Column(db.String(8), nullable=False)
-#     prereq_code = db.Column(db.String(8), nullable=False)
-#     prog_id = db.Column(db.String(80), db.ForeignKey('programs.id'))
-#
-#     @property
-#     def serialize(self):
-#         """Return object data in easily serializeable format"""
-#         return {
-#             'name': self.name,
-#             'id': self.id,
-#             'prog_id': self.prog_id
-#         }
-
-
-# class Coreq(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     course_code = db.Column(db.String(8), nullable=False)
-#     coreq_code = db.Column(db.String(8), nullable=False)
-#     prog_id = db.Column(db.String(80), db.ForeignKey('programs.id'))
-#
-#
-#     @property
-#     def serialize(self):
-#         """Return object data in easily serializeable format"""
-#         return {
-#             'name': self.name,
-#             'id': self.id,
-#             'prog_id': self.prog_id
-#         }
 
 # class Users(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
