@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import Departments, Programs, Courses
+from app.models import Departments, Programs, Courses, User, Role
 
 
 # Clear database first
@@ -90,3 +90,34 @@ print (course3.prereqs)
 
 # Course 3 EMT1250 should have prereqs of EMT1111, EMT1120
 # Course 2 CET3645 should have prereqs of EMT1250
+
+def users_roles():
+    # Create two main roles Student and Advisor
+    stu_role = Role(role_name='Student', description='A student enrolled in the college taking some courses.')
+    fac_role = Role(role_name='Advisor',
+                    description='An academic advisor, faculty member or staff, that will help student.')
+    db.session.add(stu_role)
+    db.session.add(fac_role)
+    db.session.commit()
+
+    # Create five users, 3 students and 2 advisors
+    u1 = User(username='AdamH', email='adam.h@example.com', role=stu_role)
+    u2 = User(username='PeterP', email='peter.parker@avengers.com', role=stu_role)
+    u3 = User(username='JohnnyS', email='john.smith@example.com', role=stu_role)
+    u4 = User(username='Dr.X', email='charles.xavier@avenger.com', role=fac_role)
+    u5 = User(username='BenM', email='ben.m@example.com', role=fac_role)
+    db.session.add(u1)
+    db.session.add(u2)
+    db.session.add(u3)
+    db.session.add(u4)
+    db.session.add(u5)
+    db.session.commit()
+
+    # Assigning an advisor to an user
+    u1.advisor = u5  # u1.advisor is the relationship and u5 is a User object
+    u2.advisor = u4
+    u3.advisor_id = u5.id  # Another way to do it is using the advisor_id field directly
+    db.session.commit()
+
+# Create users
+users_roles()

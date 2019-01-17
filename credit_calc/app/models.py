@@ -123,13 +123,48 @@ class Courses(db.Model):
             'dept_id': self.dept_id
         }
 
-# query_prereqs = Courses.query.join(prereq).
-#     filter(prereq.c.courses_id == Courses.id and prereq.c.prereq_id == Courses.id).all()
+class User(db.Model):
+    __tablename__ = 'user'
 
-# class Users(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(80), nullable=False)
-#     email = db.Column(db.String(80), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(64))
+    middle_name = db.Column(db.String(64))
+    last_name = db.Column(db.String(120))
+    email = db.Column(db.String(120), index=True, unique=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
+
+    # Creates a many-to-one relation (many users to one role but one user can have only one role)
+    # the relationship is called *role* and is defined in the Role model
+    role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+
+    advisor_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # Advisor ID
+
+    # Defines both advisees and advisor relationships
+    # Advisees would be an InstrumentedList of User items and advisor will be an User
+    advisees = db.relationship('User', backref=db.backref('advisor', remote_side=[id]))
+
+    def __repr__(self):
+        return '<User: {}>'.format(self.username)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+
+
+class Role(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    role_name = db.Column(db.String(64), index=True, unique=True)
+    description = db.Column(db.String(140))
+
+    # Many users can have a given role
+    users = db.relationship('User', backref='role', lazy='dynamic')
+
+    def __repr__(self):
+        return '<Role: {}>'.format(self.role_name)
 
 
 # Database Relationships

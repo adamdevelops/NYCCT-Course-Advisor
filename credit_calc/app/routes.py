@@ -18,13 +18,13 @@ def creditDashboard():
 @app.route('/login', methods=['GET', 'POST'])
 def userLogin():
     if request.method == 'POST':
-        name = request.form['name']
-        code = request.form['code']
+        user = request.form['user']
+        password = request.form['password']
         # if username is not in database test case
             #
         return redirect(url_for('creditDashboard'))
     else:
-        return render_template('createdept_form.html')
+        return render_template('login.html')
 
 # Departments Dashboard
 @app.route('/depts')
@@ -156,7 +156,7 @@ def createCourseForm():
         coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
         # Create new Course object to database
         newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
-        # Add Prereq course to new Course object
+        # Add Prereq and Coreq courses to new Course object
         newCourse.add_prereq(preq_course)
         newCourse.add_coreq(coreq_course)
         # Add Course object to database
