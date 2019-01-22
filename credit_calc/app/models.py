@@ -150,21 +150,19 @@ class User(db.Model):
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
-    def check_password(self, password_hash, password):
+    def check_password(password_hash, password):
         return check_password_hash(password_hash, password)
 
     @classmethod
     def userExists(cls, user):
-        u = User.query.filter_by(username=user).all()
-        print (u)
+        u = User.query.filter_by(username=user).first()
         return u
 
     @classmethod
     def loginUser(cls, username, password):
         u = cls.userExists(username)
-        print (u.password_hash)
-        # if u and cls.check_password(u.password_hash, password):
-        #     return u
+        if u and cls.check_password(u.password_hash, password):
+            return u
 
 
 
