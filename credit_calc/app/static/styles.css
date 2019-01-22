@@ -133,6 +133,7 @@ h3 {
 .login{
 	position: relative;
 	float: right;
+	margin-right: 0;
 }
 
 .button-edit{

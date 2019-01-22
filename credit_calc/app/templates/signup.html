@@ -18,20 +18,24 @@
 	</div>
 
 	<div class="row  menu">
-			<h2>Login</h2>
+			<h2>Signup</h2>
 	</div>
 	<div class="form-group">
 
-	<form action="{{ url_for('userLogin')}}" method = "post">
+	<form action="{{ url_for('userSignup')}}" method = "post">
 
 	<label for="name">Username:</label>
 							<input type ="text" maxlength="80" class="form-control" name="user" >
 
 	<label for="name">Password:</label>
 							<input type ="text" maxlength="80" class="form-control" name="password" >
+			<label for="name">Email:</label>
+													<input type ="text" maxlength="80" class="form-control" name="email" >
 							<br />
+
+
 							<button type="submit" class="btn btn-default" id="submit" type="submit">
-							<span class="glyphicon glyphicon-film" aria-hidden="true"></span>Login</button>
+							<span class="glyphicon glyphicon-film" aria-hidden="true"></span>Signup</button>
 	</div>
 
 
