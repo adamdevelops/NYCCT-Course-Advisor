@@ -3,6 +3,7 @@ from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app.models import Departments, Programs, Courses, User, Role, coursedept
+from app.forms import LoginForm
 
 
 # App Routes
@@ -16,18 +17,27 @@ def creditDashboard():
     return render_template('dashboard.html', depts = depts, courses = progs, pros = pros)
 
 @app.route('/login', methods=['GET', 'POST'])
-def userLogin():
-    if request.method == 'POST':
-        user = request.form['user']
-        password = request.form['password']
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for user {}, remember_me={}'.format(
+            form.username.data, form.remember_me.data))
+        return redirect(url_for('creditDashboard'))
+    return render_template('login.html', title='Log In', form=form)
 
-        if User.loginUser(user, password):
-            flash('%s was Successfully logged in' % user)
-            return redirect(url_for('creditDashboard'))
-        else:
-            return render_template('login.html')
-    else:
-        return render_template('login.html')
+# @app.route('/login', methods=['GET', 'POST'])
+# def userLogin():
+#     if request.method == 'POST':
+#         user = request.form['user']
+#         password = request.form['password']
+#
+#         if User.loginUser(user, password):
+#             flash('%s was Successfully logged in' % user)
+#             return redirect(url_for('creditDashboard'))
+#         else:
+#             return render_template('login.html')
+#     else:
+#         return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def userSignup():

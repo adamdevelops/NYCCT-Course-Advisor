@@ -123,7 +123,7 @@ class Courses(db.Model):
             'dept_id': self.dept_id
         }
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -150,8 +150,8 @@ class User(db.Model):
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
-    def check_password(password_hash, password):
-        return check_password_hash(password_hash, password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     @classmethod
     def userExists(cls, user):
@@ -161,10 +161,12 @@ class User(db.Model):
     @classmethod
     def loginUser(cls, username, password):
         u = cls.userExists(username)
-        if u and cls.check_password(u.password_hash, password):
+        if u and u.check_password(password):
             return u
 
-
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
