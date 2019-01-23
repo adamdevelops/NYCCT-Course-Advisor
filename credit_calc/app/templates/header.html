@@ -6,15 +6,23 @@
 	</div>
 	<div class="col-md-6">
 		<div class="login">
+			{% if current_user.is_anonymous %}
 			<a href="{{url_for('login')}}" >
-				<span class="glyphicons glyphicons-parents" aria-hidden="true" ></span> Login
+			  <span class="glyphicons glyphicons-parents" aria-hidden="true" ></span> Login
 			</a>
 			|
 			<a href="{{url_for('userSignup')}}" >
-				<span class="glyphicons glyphicons-parents" aria-hidden="true" ></span> Signup
+			  <span class="glyphicons glyphicons-parents" aria-hidden="true" ></span> Signup
 			</a>
+			{% else %}
+				<span>
+						{{current_user.username}}
+				</span>
+			  <a href="{{url_for('logout')}}" >
+			    <span class="glyphicons glyphicons-parents" aria-hidden="true" ></span> (Logout)
+			  </a>
+			{% endif %}
 		</div>
-
 	</div>
 </div>
 
