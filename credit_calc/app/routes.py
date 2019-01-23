@@ -3,7 +3,7 @@ from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from app.models import Departments, Programs, Courses, User, Role, coursedept
-from app.forms import LoginForm
+from app.forms import LoginForm, SignupForm
 
 
 # App Routes
@@ -56,23 +56,38 @@ def logout():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def userSignup():
-    if request.method == 'POST':
-        user = request.form['user']
-        password = request.form['password']
-        email = request.form['email']
+    # User is already logged in
+    if current_user.is_authenticated:
+        return redirect(url_for('creditDashboard'))
+    form = SignupForm()
+    if form.validate_on_submit():
+        newUser = User(username = form.username.data, email = form.email.data)
+        newUser.set_password(form.password.data)
+        db.session.add(newUser)
+        db.session.commit()
+        flash('%s was Successfully Created' % newUser.username)
+        return redirect(url_for('login'))
+    return render_template('signup.html', form=form)
 
-        # if username is not in database test case
-        newUser = User(username = user, email = email)
-        if not User.userExists(newUser.username):
-            newUser.set_password(password)
-            db.session.add(newUser)
-            db.session.commit()
-            flash('%s was Successfully Added' % newUser.username)
-            return redirect(url_for('creditDashboard'))
-        else:
-            return render_template('signup.html')
-    else:
-        return render_template('signup.html')
+# @app.route('/signup', methods=['GET', 'POST'])
+# def userSignup():
+#     if request.method == 'POST':
+#         user = request.form['user']
+#         password = request.form['password']
+#         email = request.form['email']
+#
+#         # if username is not in database test case
+        # newUser = User(username = user, email = email)
+        # if not User.userExists(newUser.username):
+        #     newUser.set_password(password)
+        #     db.session.add(newUser)
+        #     db.session.commit()
+        #     flash('%s was Successfully Added' % newUser.username)
+        #     return redirect(url_for('creditDashboard'))
+#         else:
+#             return render_template('signup.html')
+#     else:
+#         return render_template('signup.html')
 
 # Departments Dashboard
 @app.route('/depts')
