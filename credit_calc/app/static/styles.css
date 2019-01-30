@@ -136,6 +136,12 @@ h3 {
 	margin-right: 0;
 }
 
+.button-add{
+	width: 46px;
+  height: 44px;
+	background: url('/static/icons8-plus.png');
+}
+
 .button-edit{
 	opacity: 0;
   transition: opacity .35s ease;
@@ -183,6 +189,7 @@ h3 {
 	position: absolute;
 	float: right;
 }
+
 
 
 

@@ -10,7 +10,6 @@ from app.forms import LoginForm, SignupForm
 # Dashboard where a list of recent movies added to the database is shown.
 @app.route('/')
 @app.route('/dashboard/')
-@login_required
 def creditDashboard():
     depts = Departments.query.all()
     progs = Courses.query.all()
@@ -91,6 +90,7 @@ def userSignup():
 
 # Departments Dashboard
 @app.route('/depts')
+@login_required
 def deptDashboard():
     courses = Courses.query.all()
     depts = Departments.query.all()
@@ -212,8 +212,10 @@ def createCourseForm():
         code = request.form['code']
         credits = request.form['credits']
         dept_id = request.form['department']
+        multiselect = request.form.getlist('mymultiselect')
         preq_course_id = request.form['preq_course']
         coreq_course_id = request.form['coreq_course']
+        print(multiselect)
         dept = Departments.query.filter_by(id=dept_id).one()
         preq_course = Courses.query.filter_by(id=preq_course_id).one()
         coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
@@ -226,11 +228,13 @@ def createCourseForm():
         db.session.add(newCourse)
         flash('%s was Successfully Created' % newCourse.name)
         db.session.commit()
-        return redirect(url_for('creditDashboard'))
+        # return redirect(url_for('creditDashboard'))
+        return redirect(url_for('success', result_id=result.id))
     else:
         depts = Departments.query.all()
         courses = Courses.query.all()
         return render_template('createCourse_form.html', depts = depts, courses = courses)
+
 
 @app.route('/courses/edit/<int:course_id>', methods=['GET', 'POST'])
 def editCourseForm(course_id):
@@ -279,3 +283,9 @@ def coreqDashboard():
 @app.route('/login')
 def loginForm():
     return render_template('login.html')
+
+@app.route('/test')
+def test():
+    if request.method == 'POST':
+        multiselect = request.form.getlist('mymultiselect')
+    return render_template('test.html')
