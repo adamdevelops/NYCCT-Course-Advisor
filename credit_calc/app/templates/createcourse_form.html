@@ -21,36 +21,15 @@
 							<input type ="text" maxlength="80" class="form-control" name="credits">
 
 							<label for="name">Department:</label>
-              <a href="" data-toggle="modal" data-target="#myModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
+              <!-- <a href="" data-toggle="modal" data-target="#myModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a> -->
 							<select name="department">
 								{% for dept in depts %}
 			 						<option value="{{dept.id}}">{{dept.name}}</option>
-		 					 	{%endfor%}
-						  </select>
-
-							<select multiple id="mymultiselect" name="mymultiselect">
-				        <option value="1">this</option>
-				        <option value="2">that</option>
-				        <option value="3">other thing</option>
-							</select>
-
-              <br />
-
-              <label for="name">Prereq:</label>
-							<select name="preq_course">
-								{% for course in courses %}
-			 						<option value="{{course.id}}">{{course.name}}</option>
-		 					 	{%endfor%}
+		 					 	{% endfor %}
 						  </select>
 
               <br />
 
-              <label for="name">Coreq:</label>
-							<select name="coreq_course">
-								{% for course in courses %}
-			 						<option value="{{course.id}}">{{course.name}}</option>
-		 					 	{%endfor%}
-						  </select>
 
               <br />
 
@@ -60,29 +39,6 @@
 
 					</div>
 	</form>
-
-  <!-- Trigger the modal with a button -->
-
-  <!-- Modal -->
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Departments</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
 
 
 {% endblock %}

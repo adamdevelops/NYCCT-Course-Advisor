@@ -212,29 +212,49 @@ def createCourseForm():
         code = request.form['code']
         credits = request.form['credits']
         dept_id = request.form['department']
-        multiselect = request.form.getlist('mymultiselect')
-        preq_course_id = request.form['preq_course']
-        coreq_course_id = request.form['coreq_course']
-        print(multiselect)
+        # multiselect = request.form.getlist('mymultiselect')
+        # preq_course_id = request.form['preq_course']
+        # coreq_course_id = request.form['coreq_course']
         dept = Departments.query.filter_by(id=dept_id).one()
-        preq_course = Courses.query.filter_by(id=preq_course_id).one()
-        coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
+        # preq_course = Courses.query.filter_by(id=preq_course_id).one()
+        # coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
         # Create new Course object to database
         newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
         # Add Prereq and Coreq courses to new Course object
-        newCourse.add_prereq(preq_course)
-        newCourse.add_coreq(coreq_course)
+        # newCourse.add_prereq(preq_course)
+        # newCourse.add_coreq(coreq_course)
         # Add Course object to database
         db.session.add(newCourse)
         flash('%s was Successfully Created' % newCourse.name)
+        print(">>>>>>Before commit <<<<<<<")
         db.session.commit()
-        # return redirect(url_for('creditDashboard'))
-        return redirect(url_for('success', result_id=result.id))
+        return redirect(url_for('creditDashboard'))
+        # print("***************************After committ")
+        # print(newCourse)
+        # course = Courses.query.filter_by(id = newCourse.id).one()
+        # return redirect(url_for('createCoursePreReqForm', course_id=newCourse.id))
     else:
         depts = Departments.query.all()
         courses = Courses.query.all()
         return render_template('createCourse_form.html', depts = depts, courses = courses)
 
+@app.route('/courses/create/<int:course_id>', methods=['GET', 'POST'])
+def createCoursePreReqForm(course_id):
+    if request.method == 'POST':
+        # Query for new Course object we created so we can later use instance method for adding prereqs
+        newCourse = Courses.query.filter_by(name=course_name).one()
+
+        # Grab pre-req course selection from form and add it as pre-req to newCourse object
+        preq_course_id = request.form['preq_course']
+        preq_course = Courses.query.filter_by(id=preq_course_id).one()
+        newCourse.add_prereq(preq_course)
+
+        flash('%s was Successfully Added as prerequiste' % preq.name)
+        return redirect(url_for('creditDashboard'))
+    else:
+        newCourse = Courses.query.filter_by(id = course_id).one()
+        print(newCourse)
+        return render_template('createCoursePreReq_form.html', course= newCourse)
 
 @app.route('/courses/edit/<int:course_id>', methods=['GET', 'POST'])
 def editCourseForm(course_id):
@@ -249,7 +269,8 @@ def editCourseForm(course_id):
         return redirect(url_for('creditDashboard'))
     else:
         editedCourse = Courses.query.filter_by(id=course_id).one()
-        return render_template('editCourse_form.html', course = editedCourse)
+        depts = Departments.query.all()
+        return render_template('editCourse_form.html', course = editedCourse, depts = depts)
 
 @app.route('/courses/delete/<int:course_id>', methods=['GET', 'POST'])
 def deleteCourseForm(course_id):

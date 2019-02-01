@@ -114,6 +114,10 @@ class Courses(db.Model):
     #     self.name = name
     #     self.parent = parent
 
+    def __repr__(self):
+        return '<Course: {} {}>'.format(self.code, self.id)
+
+
     @property
     def serialize(self):
         """Return object data in easily serializeable format"""

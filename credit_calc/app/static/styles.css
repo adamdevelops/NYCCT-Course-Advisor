@@ -190,7 +190,21 @@ h3 {
 	float: right;
 }
 
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-dialog {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
 
+#subcat option{
+    display:none;
+}
+
+#subcat option.label{
+    display:block;
+}
 
 
 #switch {

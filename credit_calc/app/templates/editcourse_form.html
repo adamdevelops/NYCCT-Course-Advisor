@@ -20,12 +20,57 @@
 							<label for="name">Credits:</label>
 							<input type ="text" maxlength="80" class="form-control" name="credits" value="{{course.credits}}">
 
-							<button type="submit" class="btn btn-default" id="submit" type="submit">
+							<label for="name">Prereq:</label>   <br />
+							<a href="" data-toggle="modal" data-target="#myModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
 
+							<br /><br />
+							<button type="submit" class="btn btn-default" id="submit" type="submit">
 							<span class="glyphicon glyphicon-film" aria-hidden="true"></span>Edit</button>
 
 					</div>
 	</form>
+
+	<!-- Trigger the modal with a button -->
+
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Departments</h4>
+				</div>
+				<div class="modal-body">
+					<select id="cat" name="cat1">
+					    <option value>Select Department</option>
+							{% for dept in depts %}
+								<option value="{{dept.id}}">{{dept.name}}</option>
+							{% endfor %}
+					</select>
+
+					<select id="subcat" name="subcat" disabled="disabled">
+					    <option class="label" value>Select Prereq</option>
+							{% for dept in depts %}
+								{% for d in dept.course_depts %}
+								<option rel="{{dept.id}}" value="{{d.id}}">{{d.name}}</option>
+								{% endfor %}
+							{% endfor %}
+					    <!-- <option rel="1" value="1">Subcat 1.1</option>
+					    <option rel="1" value="2">Subcat 1.2</option>
+					    <option rel="2" value="3">Subcat 2.1</option>
+					    <option rel="2" value="4">Subcat 2.2</option> -->
+					</select>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
 
