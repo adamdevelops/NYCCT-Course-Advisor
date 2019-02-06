@@ -12,4 +12,13 @@ $(function(){
         $subcat.prop("disabled",false);
     });
 
+    var selection = $subcat.val()
+
+    $subcat.on("change", function() {
+        alert($subcat.val())
+        $("#myField").val($subcat.val());
+        console.log($('#myField').val());
+    });
+
+
 });

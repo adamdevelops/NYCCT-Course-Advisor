@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<form action="{{ url_for('editCourseForm', course_id = course.id)}}" method = "post">
+        <div class="form-group">
+
+            <label for="name">Name:</label>
+            <input type ="text" maxlength="80" class="form-control" name="name" value="{{course.name}}">
+
+            <label for="name">Code:</label>
+            <input type ="text" maxlength="80" class="form-control" name="code" value="{{course.code}}">
+
+            <label for="name">Credits:</label>
+            <input type ="text" maxlength="80" class="form-control" name="credits" value="{{course.credits}}">
+
+            <label for="name">Prereq:</label>   <br />
+            <a href="" data-toggle="modal" data-target="#myModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
+
+            <br /><br />
+            <button type="submit" class="btn btn-default" id="submit" type="submit">
+            <span class="glyphicon glyphicon-film" aria-hidden="true"></span>Edit</button>
+
+        </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+// $subcat.on("change", function() {
+//     alert($subcat.val())
+// });
+
+
+// $subcat.change(function() {
+//        $.ajax({
+//            type: "POST",
+//            url: "{{ url_for('editCourseForm') }}",
+//            data: {
+//                preq: $subcat.val()
+//            },
+//            success: function(data) {
+//                document.getElementById('myField').setAttribute('value', preq.id);
+//            }
+//        });
+//    });
+
+
+// document.getElementById('myField').setAttribute('value', $subcat.val());
+
+
+    // $('subcat').change(function(){
+    //     document.getElementById('myField').setAttribute('value', thevalue.id);
+    // });
+
+    // console.log(this);
+    // var selectedValue = $subcat.val();
+    // var thevalue = document.getElementById('subcat').onchange;
+    //
+    // function getSelectedValue(){
+    //     var answer = document.getElementById("subcat");
+    //     console.log(answer)
+    //     return answer
+    // }
+    //
+    // ans = getSelectedValue();
+    // document.getElementById('myField').setAttribute('value', thevalue.id);
+
+
+
+// function getSelectedValue(){
+//     var answer = document.getElementById("subcat");
+//     console.log(answer)
+// }
+
+
+
+// $(document).ready(function(){
+//   function getSelectedValue(){
+//       var answer = document.getElementById("subcat").onchange;
+//       console.log(answer)
+//   }
+// });
+
+// $(document).on('onchange', '.subcat', funtion(){
+//      $.ajax({
+//         type:"POST",
+//         url:"/sample.file.name",
+//         data:$(this).val();
+//       },
+//       success:function (res){
+//       console.log(res); //append this to next selectbox.
+//       },
+//      )};
+// });
