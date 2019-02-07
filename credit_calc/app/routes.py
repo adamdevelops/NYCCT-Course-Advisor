@@ -265,10 +265,12 @@ def editCourseForm(course_id):
         editedCourse.credits = int(request.form['credits'])
 
         preq_course_id = request.form.get('myField', False)
-
+        print('Preq value:')
         print(preq_course_id)
-        preq_course = Courses.query.filter_by(id=preq_course_id).one()
-        editedCourse.add_prereq(preq_course)
+
+        if preq_course_id:
+            preq_course = Courses.query.filter_by(id=preq_course_id).one()
+            editedCourse.add_prereq(preq_course)
 
         db.session.add(editedCourse)
         flash('%s was Successfully Edited' % editedCourse.name)
