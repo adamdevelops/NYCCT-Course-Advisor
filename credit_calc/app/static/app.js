@@ -1,24 +1,58 @@
 $(function(){
 
-    var $cat = $("#cat"),
-        $subcat = $("#subcat");
+    var $preqcat = $("#cat1"),
+        $preqsubcat = $("#subcat1");
 
-    $cat.on("change",function(){
+    /*
+      Code for prerequiste courses
+    */
+
+    // Only display related courses for the selected department
+    $preqcat.on("change",function(){
         var _rel = $(this).val();
-        $subcat.find("option").attr("style","");
-        $subcat.val("");
-        if(!_rel) return $subcat.prop("disabled",true);
-        $subcat.find("[rel="+_rel+"]").show();
-        $subcat.prop("disabled",false);
+        $preqsubcat.find("option").attr("style","");
+        $preqsubcat.val("");
+        if(!_rel) return $preqsubcat.prop("disabled",true);
+        $preqsubcat.find("[rel="+_rel+"]").show();
+        $preqsubcat.prop("disabled",false);
     });
 
-    var selection = $subcat.val()
-
-    $subcat.on("change", function() {
-        alert($subcat.val())
-        $("#myField").val($subcat.val());
-        console.log($('#myField').val());
+    // Trigger function when preq course selection is made and store its value in hidden input
+    $preqsubcat.on("change", function() {
+        // Show value of selected preq course value
+        // alert($preqsubcat.val())
+        $("#preq").val($preqsubcat.val());
+        // Confirm that the selected value was stored in hidden input for preq course
+        // console.log($('#preq').val());
     });
+
+    var $coreqcat = $("#cat2"),
+        $coreqsubcat = $("#subcat2");
+
+    /*
+      Code for prerequiste courses
+    */
+
+    // Only display related courses for the selected department
+    $coreqcat.on("change",function(){
+        var _rel = $(this).val();
+        $coreqsubcat.find("option").attr("style","");
+        $coreqsubcat.val("");
+        if(!_rel) return $coreqsubcat.prop("disabled",true);
+        $coreqsubcat.find("[rel="+_rel+"]").show();
+        $coreqsubcat.prop("disabled",false);
+    });
+
+    // Trigger function when preq course selection is made and store its value in hidden input
+    $coreqsubcat.on("change", function() {
+        // Show value of selected preq course value
+        // alert($coreqsubcat.val())
+        $("#coreq").val($coreqsubcat.val());
+        // Confirm that the selected value was stored in hidden input for preq course
+        // console.log($('#preq').val());
+    });
+
+
 
 
 });

@@ -198,11 +198,19 @@ h3 {
     z-index: 1100 !important;
 }
 
-#subcat option{
+#subcat1 option{
     display:none;
 }
 
-#subcat option.label{
+#subcat1 option.label{
+    display:block;
+}
+
+#subcat2 option{
+    display:none;
+}
+
+#subcat2 option.label{
     display:block;
 }
 
