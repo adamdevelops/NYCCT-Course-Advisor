@@ -324,8 +324,12 @@ def coreqDashboard():
 def loginForm():
     return render_template('login.html')
 
-@app.route('/test')
+@app.route('/test', methods=['GET', 'POST'])
 def test():
     if request.method == 'POST':
-        multiselect = request.form.getlist('mymultiselect')
-    return render_template('test.html')
+        multiselect = request.form.getlist('multival')
+        print('Result of multiselect')
+        print(multiselect)
+        return redirect(url_for('creditDashboard'))
+    else:
+        return render_template('test.html')

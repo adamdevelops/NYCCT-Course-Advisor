@@ -4,85 +4,97 @@
 
 	<div class="row banner menu">
 			<div class="col-md-11 col-md-offset-1 padding-none">
-				<h1>New Course:</h1>
+				<h1>Test</h1>
 			</div>
 	</div>
 
-	<form action="{{ url_for('createCourseForm')}}" method = "post">
+	<form action="{{ url_for('test') }}" method="post">
 					<div class="form-group">
 
-							<label for="name">Name:</label>
-							<input type ="text" maxlength="80" class="form-control" name="name">
+							<label for="name">Test coreqs:</label>   <br />
+							<a href="" data-toggle="modal" data-target="#coreqModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
 
-							<label for="name">Code:</label>
-							<input type ="text" maxlength="80" class="form-control" name="code">
+							<input type="hidden" id="multival" name="multival" />
 
-							<label for="name">Credits:</label>
-							<input type ="text" maxlength="80" class="form-control" name="credits">
 
-							<label for="name">Department:</label>
-              <a href="" data-toggle="modal" data-target="#myModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
-							<select name="department">
-								{% for dept in depts %}
-			 						<option value="{{dept.id}}">{{dept.name}}</option>
-		 					 	{%endfor%}
-						  </select>
 
-							<select multiple id="mymultiselect" name="mymultiselect">
-				        <option value="1">this</option>
-				        <option value="2">that</option>
-				        <option value="3">other thing</option>
-							</select>
-
-              <br />
-
-              <label for="name">Prereq:</label>
-							<select name="preq_course">
-								{% for course in courses %}
-			 						<option value="{{course.id}}">{{course.name}}</option>
-		 					 	{%endfor%}
-						  </select>
-
-              <br />
-
-              <label for="name">Coreq:</label>
-							<select name="coreq_course">
-								{% for course in courses %}
-			 						<option value="{{course.id}}">{{course.name}}</option>
-		 					 	{%endfor%}
-						  </select>
-
-              <br />
-
+							<br /><br />
 							<button type="submit" class="btn btn-default" id="submit" type="submit">
-
-							<span class="glyphicon glyphicon-film" aria-hidden="true"></span>Create</button>
-
+							<span class="glyphicon glyphicon-film" aria-hidden="true"></span>Edit</button>
 					</div>
 	</form>
 
-  <!-- Trigger the modal with a button -->
+	<!-- Trigger the modal with a button -->
 
-  <!-- Modal -->
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+	<!-- Preq Modal -->
+	<!-- <div id="preqModal" class="modal fade" role="dialog">
+	<div class="modal-dialog"> -->
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Departments</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+			<!-- Modal content-->
+			<!-- <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Preq</h4>
+				</div>
+				<div class="modal-body">
+					<select id="cat1">
+							<option>Select Department</option>
+							{% for dept in depts %}
+								<option value="{{dept.id}}">{{dept.name}}</option>
+							{% endfor %}
+					</select>
 
-    </div>
-  </div>
+					<select id="subcat1" disabled="disabled">
+							<option class="label">Select Prereq</option>
+							{% for dept in depts %}
+								{% for d in dept.course_depts %}
+								<option rel="{{dept.id}}" value="{{d.id}}">{{d.name}}</option>
+								{% endfor %}
+							{% endfor %}
+					</select>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div> -->
+
+	<!-- Trigger the modal with a button -->
+
+	<!-- Coreq Modal -->
+	<div id="coreqModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Coreq</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+					<strong>Select Language:</strong>
+				    <select name="lang" id="multiple-checkboxes" multiple="multiple">
+				        <option value="php">PHP</option>
+				        <option value="javascript">JavaScript</option>
+				        <option value="java">Java</option>
+				        <option value="sql">SQL</option>
+				        <option value="jquery">Jquery</option>
+				        <option value=".net">.Net</option>
+				    </select>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
 {% endblock %}

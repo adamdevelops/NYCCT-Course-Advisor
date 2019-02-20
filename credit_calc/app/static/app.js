@@ -54,5 +54,28 @@ $(function(){
 
 
 
+    var $multisubcat = $("#multiple-checkboxes");
+
+    $multisubcat.multiselect({
+        includeSelectAllOption : true,
+        nonSelectedText: 'Select an Option'
+    });
+
+    $multisubcat.on("change", function() {
+        // Show value of selected preq course value
+        // alert($coreqsubcat.val())
+        $("#multival").val($multisubcat.val());
+        // Confirm that the selected value was stored in hidden input for preq course
+        console.log('multival value:');
+        console.log($('#multival').val());
+    });
+
+
+
+
 
 });
+
+// $(document).ready(function() {
+//
+// });
