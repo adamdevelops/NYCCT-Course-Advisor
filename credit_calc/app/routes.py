@@ -328,8 +328,14 @@ def loginForm():
 def test():
     if request.method == 'POST':
         multiselect = request.form.getlist('multival')
-        print('Result of multiselect')
+        print('Result of multiselect:')
         print(multiselect)
+        print('Result of multiselect indexes:')
+        for coreq_course_id in multiselect:
+            print(coreq_course_id)
+            coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
+            editedCourse.add_coreq(coreq_course)
         return redirect(url_for('creditDashboard'))
     else:
-        return render_template('test.html')
+        depts = Departments.query.all()
+        return render_template('test.html', depts = depts)

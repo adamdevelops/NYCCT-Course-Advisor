@@ -78,12 +78,12 @@
 					<div class="container">
 					<strong>Select Language:</strong>
 				    <select name="lang" id="multiple-checkboxes" multiple="multiple">
-				        <option value="php">PHP</option>
-				        <option value="javascript">JavaScript</option>
-				        <option value="java">Java</option>
-				        <option value="sql">SQL</option>
-				        <option value="jquery">Jquery</option>
-				        <option value=".net">.Net</option>
+							<option class="label">Select Coreq</option>
+							{% for dept in depts %}
+								{% for d in dept.course_depts %}
+								<option value="{{d.id}}">{{d.name}}</option>
+								{% endfor %}
+							{% endfor %}
 				    </select>
 					</div>
 
@@ -95,6 +95,15 @@
 
 		</div>
 	</div>
+
+	<!-- <select name="lang" id="multiple-checkboxes" multiple="multiple">
+			<option value="php">PHP</option>
+			<option value="javascript">JavaScript</option>
+			<option value="java">Java</option>
+			<option value="sql">SQL</option>
+			<option value="jquery">Jquery</option>
+			<option value=".net">.Net</option>
+	</select> -->
 
 
 {% endblock %}
