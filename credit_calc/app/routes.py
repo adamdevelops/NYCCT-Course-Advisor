@@ -329,6 +329,7 @@ def test(course_id):
     if request.method == 'POST':
         print('get edit course')
         editedCourse = Courses.query.filter_by(id=course_id).one()
+        print(editedCourse)
         print('get multivalue')
         multiselect = request.form.getlist('multival')
         print('Result of multiselect:')
@@ -337,12 +338,12 @@ def test(course_id):
         print(multiselect[0].split(','))
         print('Result of multiselect indexes:')
         for coreq_course_id in multiselect[0].split(','):
-            # print(multiselect[id].split(','))
             print(id)
             print('....')
-            coreq_course = Courses.query.filter_by(id=int(coreq_course_id)).one()
+            coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
             print(coreq_course)
-            #editedCourse.add_coreq(coreq_course)
+            editedCourse.add_coreq(coreq_course)
+            db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
         editedCourse = Courses.query.filter_by(id=course_id).one()
