@@ -324,18 +324,27 @@ def coreqDashboard():
 def loginForm():
     return render_template('login.html')
 
-@app.route('/test', methods=['GET', 'POST'])
-def test():
+@app.route('/test/<int:course_id>', methods=['GET', 'POST'])
+def test(course_id):
     if request.method == 'POST':
+        print('get edit course')
+        editedCourse = Courses.query.filter_by(id=course_id).one()
+        print('get multivalue')
         multiselect = request.form.getlist('multival')
         print('Result of multiselect:')
         print(multiselect)
+        print(multiselect[0])
+        print(multiselect[0].split(','))
         print('Result of multiselect indexes:')
-        for coreq_course_id in multiselect:
-            print(coreq_course_id)
-            coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-            editedCourse.add_coreq(coreq_course)
+        for coreq_course_id in multiselect[0].split(','):
+            # print(multiselect[id].split(','))
+            print(id)
+            print('....')
+            coreq_course = Courses.query.filter_by(id=int(coreq_course_id)).one()
+            print(coreq_course)
+            #editedCourse.add_coreq(coreq_course)
         return redirect(url_for('creditDashboard'))
     else:
+        editedCourse = Courses.query.filter_by(id=course_id).one()
         depts = Departments.query.all()
-        return render_template('test.html', depts = depts)
+        return render_template('test.html', course = editedCourse, depts = depts)

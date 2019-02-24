@@ -214,6 +214,14 @@ h3 {
     display:block;
 }
 
+#multiple-checkboxes option{
+    display:none;
+}
+
+#multiple-checkboxes option.label{
+    display:block;
+}
+
 
 #switch {
   height:50px;

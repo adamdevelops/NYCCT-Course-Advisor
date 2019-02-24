@@ -53,13 +53,23 @@ $(function(){
     });
 
 
-
+    var $coreqtestcat = $("#cat3")
     var $multisubcat = $("#multiple-checkboxes");
 
-    $multisubcat.multiselect({
-        includeSelectAllOption : true,
-        nonSelectedText: 'Select an Option'
+    // $multisubcat.multiselect({
+    //     includeSelectAllOption : true,
+    //     nonSelectedText: 'Select an Option'
+    // });
+
+    $coreqtestcat.on("change",function(){
+        var _rel = $(this).val();
+        $multisubcat.find("option").attr("style","");
+        $multisubcat.val("");
+        if(!_rel) return $multisubcat.prop("disabled",true);
+        $multisubcat.find("[rel="+_rel+"]").show();
+        $multisubcat.prop("disabled",false);
     });
+
 
     $multisubcat.on("change", function() {
         // Show value of selected preq course value
