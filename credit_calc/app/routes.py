@@ -273,13 +273,29 @@ def editCourseForm(course_id):
             preq_course = Courses.query.filter_by(id=preq_course_id).one()
             editedCourse.add_prereq(preq_course)
 
-        coreq_course_id = request.form.get('coreq', False)
+        # coreq_course_id = request.form.get('coreq', False)
         # Verify value of store value in hidden input for coreq
         # print('Coreq value:')
         # print(coreq_course_id)
 
-        if coreq_course_id:
+        #if coreq_course_id:
+        #    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
+        #    editedCourse.add_coreq(coreq_course)
+
+        print(editedCourse)
+        print('get multivalue')
+        multiselect = request.form.getlist('coreq')
+        print('Result of multiselect:')
+        print(multiselect)
+        print(multiselect[0])
+        print(multiselect[0].split(','))
+        print('Result of multiselect indexes:')
+
+        for coreq_course_id in multiselect[0].split(','):
+            print(id)
+            print('....')
             coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
+            print(coreq_course)
             editedCourse.add_coreq(coreq_course)
 
         db.session.add(editedCourse)

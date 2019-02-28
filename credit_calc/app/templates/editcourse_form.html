@@ -90,21 +90,22 @@
 					<h4 class="modal-title">Coreq</h4>
 				</div>
 				<div class="modal-body">
-					<select id="cat2">
-					    <option value>Select Department</option>
-							{% for dept in depts %}
-								<option value="{{dept.id}}">{{dept.name}}</option>
-							{% endfor %}
-					</select>
-
-					<select id="subcat2" disabled="disabled">
-					    <option class="label" value>Select Coreq</option>
+					<div class="container">
+						<select id="cat2" class="btn">
+						    <option value>Select Department</option>
+								{% for dept in depts %}
+									<option value="{{dept.id}}">{{dept.name}}</option>
+								{% endfor %}
+						</select>
+					<strong>Select Language:</strong>
+				    <select id="subcat2" multiple="multiple" class="btn">
 							{% for dept in depts %}
 								{% for d in dept.course_depts %}
 								<option rel="{{dept.id}}" value="{{d.id}}">{{d.name}}</option>
 								{% endfor %}
 							{% endfor %}
-					</select>
+				    </select>
+					</div>
 
 				</div>
 				<div class="modal-footer">

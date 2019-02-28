@@ -77,14 +77,14 @@
 				<div class="modal-body">
 					<div class="container">
 
-						<select id="cat3">
+						<select id="cat3" class="btn">
 						    <option value>Select Department</option>
 								{% for dept in depts %}
 									<option value="{{dept.id}}">{{dept.name}}</option>
 								{% endfor %}
 						</select>
 					<strong>Select Language:</strong>
-				    <select name="lang" id="multiple-checkboxes" multiple="multiple">
+				    <select name="lang" id="multiple-checkboxes" multiple="multiple" class="btn">
 							{% for dept in depts %}
 								{% for d in dept.course_depts %}
 								<option rel="{{dept.id}}" value="{{d.id}}">{{d.name}}</option>
