@@ -140,8 +140,10 @@ def deleteDeptForm(dept_id):
 # Specific Department Page
 @app.route('/depts/<int:dept_id>')
 def deptDetail(dept_id):
-    Department = Departments.query.filter_by(id=dept_id).one()
-    return render_template('departments_detail.html', dept = Department)
+    department = Departments.query.filter_by(id=dept_id).one()
+    print(department.progs)
+    # print(department.progs.id)
+    return render_template('departments_detail.html', dept = department)
 
 # Programs Dashboard
 @app.route('/programs')
@@ -264,34 +266,30 @@ def editCourseForm(course_id):
         editedCourse.code = request.form['code']
         editedCourse.credits = int(request.form['credits'])
 
-        preq_course_id = request.form.get('preq', False)
-        # Verify value of store value in hidden input for preq
-        # print('Preq value:')
-        # print(preq_course_id)
+        prereqs = request.form.getlist('prereq')
+        print('Result of prereqs:')
+        print(prereqs)
+        print(prereqs[0])
+        print(prereqs[0].split(','))
+        print('Result of prereqs indexes:')
 
-        if preq_course_id:
-            preq_course = Courses.query.filter_by(id=preq_course_id).one()
-            editedCourse.add_prereq(preq_course)
+        for prereq_course_id in prereqs[0].split(','):
+            print(id)
+            print('....')
+            prereq_course = Courses.query.filter_by(id=prereq_course_id).one()
+            print(prereq_course)
+            editedCourse.add_coreq(prereq_course)
 
-        # coreq_course_id = request.form.get('coreq', False)
-        # Verify value of store value in hidden input for coreq
-        # print('Coreq value:')
-        # print(coreq_course_id)
 
-        #if coreq_course_id:
-        #    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-        #    editedCourse.add_coreq(coreq_course)
-
-        print(editedCourse)
         print('get multivalue')
-        multiselect = request.form.getlist('coreq')
-        print('Result of multiselect:')
-        print(multiselect)
-        print(multiselect[0])
-        print(multiselect[0].split(','))
-        print('Result of multiselect indexes:')
+        coreqs = request.form.getlist('coreq')
+        print('Result of coreqs:')
+        print(coreqs)
+        print(coreqs[0])
+        print(coreqs[0].split(','))
+        print('Result of coreqs indexes:')
 
-        for coreq_course_id in multiselect[0].split(','):
+        for coreq_course_id in coreqs[0].split(','):
             print(id)
             print('....')
             coreq_course = Courses.query.filter_by(id=coreq_course_id).one()

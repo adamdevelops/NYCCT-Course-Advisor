@@ -30,27 +30,9 @@ $(function(){
         $coreqsubcat = $("#subcat2");
 
     /*
-      Code for prerequiste courses
+      Code for corequiste courses
     */
 
-    // Only display related courses for the selected department
-    // $coreqcat.on("change",function(){
-    //     var _rel = $(this).val();
-    //     $coreqsubcat.find("option").attr("style","");
-    //     $coreqsubcat.val("");
-    //     if(!_rel) return $coreqsubcat.prop("disabled",true);
-    //     $coreqsubcat.find("[rel="+_rel+"]").show();
-    //     $coreqsubcat.prop("disabled",false);
-    // });
-
-    // Trigger function when preq course selection is made and store its value in hidden input
-    // $coreqsubcat.on("change", function() {
-    //     Show value of selected preq course value
-    //     alert($coreqsubcat.val())
-    //     $("#coreq").val($coreqsubcat.val());
-    //     Confirm that the selected value was stored in hidden input for preq course
-    //     console.log($('#preq').val());
-    // });
 
     $coreqcat.on("change",function(){
         var _rel = $(this).val();
@@ -70,39 +52,5 @@ $(function(){
     });
 
 
-    var $coreqtestcat = $("#cat3")
-    var $multisubcat = $("#multiple-checkboxes");
-
-    // $multisubcat.multiselect({
-    //     includeSelectAllOption : true,
-    //     nonSelectedText: 'Select an Option'
-    //});
-
-    $coreqtestcat.on("change",function(){
-        var _rel = $(this).val();
-        $multisubcat.find("option").attr("style","");
-        $multisubcat.val("");
-        if(!_rel) return $multisubcat.prop("disabled",true);
-        $multisubcat.find("[rel="+_rel+"]").show();
-        $multisubcat.prop("disabled",false);
-    });
-
-
-    $multisubcat.on("change", function() {
-        // Show value of selected preq course value
-        // alert($coreqsubcat.val())
-        $("#multival").val($multisubcat.val());
-        // Confirm that the selected value was stored in hidden input for preq course
-        console.log('multival value:');
-        console.log($('#multival').val());
-    });
-
-
-
-
 
 });
-
-// $(document).ready(function() {
-//
-// });

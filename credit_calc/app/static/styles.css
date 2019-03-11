@@ -55,10 +55,10 @@ h3 {
  }
 
 .padding-top {
-	padding-top: 30px;
+	padding-top: 10px;
 }
 .padding-bottom {
-	padding-bottom: 30px;
+	padding-bottom: 10px;
 }
 .margin-right {
 	margin-right: 30px;
@@ -66,12 +66,20 @@ h3 {
 .padding-none {
 	padding: 0;
 }
+
+.detail-dash-title{
+	display: inline-block;
+	float: left;
+	color: #42C3C9;
+	font-weight: 400;
+}
+
 .btn {
 	padding: 20px;
 	margin: 0;
 	border-color: #42C3C9;
 	border-width: 2px;
-	color: #42C3C9;
+	/* color: #42C3C9; */
 }
 .btn:hover {
 	border-color: #42C3C9;
@@ -185,9 +193,11 @@ h3 {
 	position: absolute;
 }
 
-.button-dept{
-	position: absolute;
+.button-detail-dash{
+	display: inline-block;
+	/* position: absolute;
 	float: right;
+	margin-right: 10px; */
 }
 
 .modal-backdrop {

@@ -52,14 +52,14 @@
 					<h4 class="modal-title">Preq</h4>
 				</div>
 				<div class="modal-body">
-					<select id="cat1">
+					<select id="cat1" class="btn">
 					    <option>Select Department</option>
 							{% for dept in depts %}
 								<option value="{{dept.id}}">{{dept.name}}</option>
 							{% endfor %}
 					</select>
 
-					<select id="subcat1" disabled="disabled">
+					<select id="subcat1" multiple="multiple" class="btn" disabled="disabled">
 					    <option class="label">Select Prereq</option>
 							{% for dept in depts %}
 								{% for d in dept.course_depts %}

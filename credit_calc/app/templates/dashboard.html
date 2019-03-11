@@ -17,13 +17,6 @@
 	  {% endwith %}
 	</div>
 
-
-
-
-		<section> <h2>Required Courses</h2></section>
-
-	</div>
-
 <div>
 		<!-- Categories menu for all program categories -->
 		<!-- <div class="col-md-2">
@@ -36,14 +29,27 @@
 		</div> -->
 
 
-		<div class="col-md-2 padding-none">
+		<div class="col-md-2 padding-top">
 				<a href="{{ url_for('deptDashboard') }}">
 					<button class="btn btn-default">
-						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Dept
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Depts
+					</button>
+				</a> <br /> <br />
+
+				<a href="{{ url_for('progDashboard') }}">
+					<button class="btn btn-default">
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Programs
+					</button>
+				</a> <br /> <br />
+
+				<a href="{{ url_for('courseDashboard') }}">
+					<button class="btn btn-default">
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Courses
 					</button>
 				</a>
 
-				<div>
+				<!-- Display foreign key relationships of courses and programs connected to departments-->
+				<!-- <div>
 				Departments:
 				{% for dept in depts %}
 					{{dept.id}}
@@ -52,7 +58,8 @@
 					{{dept.progs.name}}
 				 {%endfor%}
 
-
+				 <!-- Display foreign key relationships of depts connected to programs -->
+				 <!--
 				 <div>
 					 Programs:
 					 {% for pro in pros %}
@@ -62,21 +69,25 @@
 					 {%endfor%}
 
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 
-		<div class="col-md-10 ">
-		{% for course in courses %}
-			<a href = " {{ url_for('courseDashboard') }}">
-					<div class="col-md-2"></div>
-					<div class="movies-list">
-							<h3>{{course.name}}</h3>
-							<h3>{{course.dept.name}}</h3>
-						</div>
-			</a>
-		{% endfor %}
-		</div>
-	</div>
+		<div class="col-md-10 padding-top">
+			<div class="jumbotron">
+			  <h1 class="display-4">Welcome,</h1>
+			  <p class="lead">
 
+				</p>
+			  <hr class="my-4">
+			  <p>You can use this site to help track your courses and discover the best academic path to take.</p>
+				<p> Go ahead and click below on Get Started to start tracking your courses.</p>
+			  <p class="lead">
+			    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Get Started</a>
+			  </p>
+			</div>
+		</div>
+
+
+	</div>
 {% endblock %}
