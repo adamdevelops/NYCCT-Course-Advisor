@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+
+<!-- Flash message that shows messages of the CRUD actions done within the website -->
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	    {% endif %}
+	  {% endwith %}
+	</div>
+
+<div>
+		<!-- Categories menu for all program categories -->
+		<!-- <div class="col-md-2">
+			Departments
+			<ul>
+				{% for dept in depts %}
+					<a href=""><li>{{dept.name}}</li></a>
+				{% endfor %}
+			</ul>
+		</div> -->
+
+
+		<div class="col-md-2 padding-top">
+				<a href="{{ url_for('deptDashboard') }}">
+					<button class="btn btn-default">
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Depts
+					</button>
+				</a> <br /> <br />
+
+				<a href="{{ url_for('progDashboard') }}">
+					<button class="btn btn-default">
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Programs
+					</button>
+				</a> <br /> <br />
+
+				<a href="{{ url_for('courseDashboard') }}">
+					<button class="btn btn-default">
+						<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Courses
+					</button>
+				</a>
+
+				<!-- Display foreign key relationships of courses and programs connected to departments-->
+				<!-- <div>
+				Departments:
+				{% for dept in depts %}
+					{{dept.id}}
+					{{dept.name}}
+					{{dept.course_depts[0].name}}
+					{{dept.progs.name}}
+				 {%endfor%}
+
+				 <!-- Display foreign key relationships of depts connected to programs -->
+				 <!--
+				 <div>
+					 Programs:
+					 {% for pro in pros %}
+						{{pro.id}}
+						{{pro.name}}
+						{{pro.dept_id}},
+					 {%endfor%}
+
+					</div>
+				</div> -->
+			</div>
+
+
+		<div class="col-md-10 padding-top">
+			<div class="jumbotron">
+			  <h1 class="display-4">Welcome,</h1>
+			  <p class="lead">
+
+				</p>
+			  <hr class="my-4">
+			  <p>You can use this site to help track your courses and discover the best academic path to take.</p>
+				<p> Go ahead and click below on Get Started to start tracking your courses.</p>
+			  <p class="lead">
+			    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Get Started</a>
+			  </p>
+			</div>
+		</div>
+
+
+	</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+
+<!-- Flash message that shows messages of the CRUD actions done within the website -->
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	    {% endif %}
+	  {% endwith %}
+	</div>
+
+
+<div class="container padding-top padding-bottom">
+	<div class="col-md-6"><section class="detail-dash-title"><h2>Departments:</h2></section></div>
+	<div class="col-md-6">
+		<a href="{{ url_for('createDeptForm') }}" >
+			<button class="btn btn-default button-dept">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Department
+			</button>
+		</a>
+	</div>
+</div>
+
+<div class="col-md-12">
+
+		<!-- Categories menu for all program categories -->
+				{% for dept in depts %}
+					<a href = "{{ url_for('deptDetail', dept_id = dept.id)}}"> <!-- edit later -->
+						<div class="movies-list">
+							<h3>{{dept.name}}</h3>
+						</div>
+					</a>
+				{% endfor %}
+
+
+	</div>
+{% endblock %}
