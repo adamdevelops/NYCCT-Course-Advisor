@@ -67,6 +67,16 @@ h3 {
 	padding: 0;
 }
 
+.glyphicon-chevron-right{
+	color: #D3D3D3 !important;
+	font-size: 2em;
+}
+
+.dept-dash-names{
+	font-size: 3em;
+	color: #606060;
+}
+
 .detail-dash-title{
 	display: inline-block;
 	float: left;
