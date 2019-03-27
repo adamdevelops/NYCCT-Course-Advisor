@@ -72,6 +72,15 @@ h3 {
 	font-size: 2em;
 }
 
+.table-headings{
+	width: 17%;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+
 .dept-dash-names{
 	font-size: 3em;
 	color: #606060;

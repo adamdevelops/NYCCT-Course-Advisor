@@ -81,9 +81,7 @@ class Courses(db.Model):
         primaryjoin=(coreq.c.course_id == id),
         secondaryjoin=(coreq.c.coreq_id == id),
         backref=db.backref('coreq', lazy='dynamic'), lazy='dynamic')
-    children = db.relationship("Courses",
-                backref=db.backref('parent', remote_side=[id])
-            )
+
 
 
     # Add Prereq course to a Course

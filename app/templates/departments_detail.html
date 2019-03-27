@@ -43,27 +43,30 @@
 
 <div class="col-md-12">
 
-			<h3>Name: {{dept.name}}</h3>
+			<h4>Code: {{dept.code}}</h4>
 
-			<h6>Code: {{dept.code}}</h6>
-
-			<h6>Program ID:
-
-				<ul>
+			<h3>Program:
 					{% for p in dept.progs %}
-					<li>  {{p.name}}	</li>
-					<li>  {{p.id}}	</li>
+						<a href="{{ url_for('programDetail', prog_id = p.id) }}" > {{p.name}} </a>
 					{% endfor %}
-					</ul>
-				</h6>
+			</h3>
 
-			<h6>Department Courses:</h6>
+			<h4>Department Courses:</h4>
 
-			<ul>
-				{% for c in dept.course_depts %}
-				<li>  {{c.name}}	</li>
-				{% endfor %}
-				</ul>
+				<table>
+						<tbody>
+							<tr>
+									<th class="table-headings"> Course Code </th>
+									<th class="table-headings"> Course Name </th>
+							</tr>
+							{% for c in dept.course_depts %}
+							<tr>
+									<td> 	<a href="{{ url_for('courseDetail', course_id = c.id) }}"> {{c.code}} </a>		</td>
+									<td> 	<a href="{{ url_for('courseDetail', course_id = c.id) }}"> {{c.name}} </a>		</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+				</table>
 
 	</div>
 {% endblock %}

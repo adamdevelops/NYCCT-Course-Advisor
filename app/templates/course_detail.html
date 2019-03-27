@@ -17,13 +17,24 @@
 	  {% endwith %}
 	</div>
 
-
-<div class="container">
-	<div class="col-md-6"><section class=""><h2>Course</h2></section></div>
+<div class="container padding-top">
+	<div class="col-md-6"><section ><h1 class="dept-title">{{course.name}}</h1></section></div>
 	<div class="col-md-6">
 		<a href="{{ url_for('createCourseForm') }}" >
 			<button class="btn btn-default button-dept">
 				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Course
+			</button>
+		</a>
+
+		<a class="button-detail-dash" href="{{ url_for('editCourseForm', course_id = course.id) }}" >
+			<button class="btn btn-default button-detail-dash">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Edit Course
+			</button>
+		</a>
+
+		<a class="button-detail-dash" href="{{ url_for('deleteCourseForm', course_id = course.id) }}" >
+			<button class="btn btn-default button-detail-dash">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Delete Course
 			</button>
 		</a>
 	</div>
@@ -31,36 +42,43 @@
 
 <div class="col-md-12">
 
-			<h3>Name: {{course.name}}</h3>
+			<h3>Code: {{course.code}}</h3>
 
-			<h6>Code: {{course.code}}</h6>
+			<h3>Credits: {{course.credits}}</h3>
 
-			<h6>Credits: {{course.credits}}</h6>
+			<h3>Dept Name: <a href="{{ url_for('deptDetail', dept_id = course.dept.id) }}"> {{course.dept.name}} </a> </h3>
 
-			<h6>Dept Name: {{course.dept.name}}</h6>
+			<h3>Prerequistes: 			</h3>
 
-			<h6>Prerequistes:
-
-				{% for prereq in course.prereqs %}
-					<li>
-						{{prereq.id}},
-						{{prereq.name}}
-						</li>
-				{% endfor %}
-
-			</h6>
-
-			<h6>Corequistes:
-
-				{% for coreq in course.coreqs %}
-					<li>
-						{{coreq.id}},
-						{{coreq.name}}
-						</li>
-				{% endfor %}
-
-			</h6>
+				<table>
+						<tbody>
+							<tr>
+									<!-- <th class="table-headings"> Course Number </th> -->
+									<th class=""> Course Name </th>
+							</tr>
+							{% for prereq in course.prereqs %}
+								<tr>
+										<td>	<a href="{{ url_for('courseDetail', course_id = prereq.id) }}"> {{prereq.name}} </a>	</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+				</table>
 
 
+			<h4> Corequistes:			</h4>
+
+				<table>
+						<tbody>
+							<tr>
+									<!-- <th class="table-headings"> Course Number </th> -->
+									<th class="table-headings"> Course Name </th>
+							</tr>
+							{% for coreq in course.coreqs %}
+								<tr>
+										<td>	<a href="{{ url_for('courseDetail', course_id = coreq.id) }}"> {{coreq.name}} </a>	</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+				</table>
 	</div>
 {% endblock %}
