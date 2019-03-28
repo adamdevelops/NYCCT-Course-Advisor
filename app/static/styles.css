@@ -12,16 +12,16 @@ h1 {
 }
 
 h2 {
-	font-size: 24px;
+	/* font-size: 24px;
 	color: #42C3C9;
 	line-height: 29px;
-	text-decoration: underline;
+	text-decoration: underline; */
 }
 
 h3 {
-	font-size: 18px;
+	/* font-size: 18px;
 	color: #4A4A4A;
-	line-height: 23px;
+	line-height: 23px; */
 }
  p {
  	font-family: "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
@@ -37,11 +37,6 @@ h3 {
  	line-height: 24px;
  }
 
- a {
- 	font-size: 14px;
- 	color: #0093B9;
- 	line-height: 17px;
- }
 
  section {
    float: right;
@@ -65,6 +60,36 @@ h3 {
 }
 .padding-none {
 	padding: 0;
+}
+
+.dashboard-menu{
+	border: 3px solid #eaeef1;
+	list-style: none;
+	padding: 0 !important;
+	color: #D3D3D3 !important;
+	margin-top: 20%;
+}
+
+a.dash-links{
+	color: #23527c !important;
+}
+
+a:hover.dash-links{
+	color: #606060 !important;
+	background-color: #EEE !important;
+	text-decoration: none;
+}
+
+ul.dashboard-menu > li {
+	border-bottom: 3px solid #eaeef1;
+	text-align: center;
+	padding: 12px 30px 12px 25px;
+	color: black !important;
+}
+
+#nav li:hover {
+		color: #606060 !important;
+		background-color: #EEE !important;
 }
 
 .glyphicon-chevron-right{
