@@ -32,14 +32,19 @@
 <div class="col-md-12 padding-top">
 
 		<!-- Categories menu for all program categories -->
-				{% for dept in depts %}
-					<a href = "{{ url_for('deptDetail', dept_id = dept.id)}}"> <!-- edit later -->
-						<div class="padding-top ">
-							<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{dept.name}}</span>
-							<hr />
-						</div>
-					</a>
-				{% endfor %}
+		{% if depts %}
+			{% for dept in depts %}
+				<a href = "{{ url_for('deptDetail', dept_id = dept.id)}}"> <!-- edit later -->
+					<div class="padding-top ">
+						<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{dept.name}}</span>
+						<hr />
+					</div>
+				</a>
+			{% endfor %}
+		{% else %}
+			<h3>Currently they're no Departments created. Please click on create Deparment </h3>
+		{% endif %}
+
 
 
 	</div>

@@ -30,6 +30,7 @@
 <div class="">
 
 			Courses
+			{% if courses %}
 				{% for course in courses %}
 					<a href = "{{ url_for('courseDetail', course_id = course.id) }}">
 							<div class="movies-list">
@@ -37,6 +38,9 @@
 								</div>
 					</a>
 				{% endfor %}
+			{% else %}
+				<h3>Currently they're no Courses created. Please click on create Courses </h3>
+			{% endif %}
 
 
 	</div>

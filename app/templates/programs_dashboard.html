@@ -19,20 +19,32 @@
 
 
 
-<section class="col-md-12"> <h2>Required Courses</h2></section>
+	<div class="container padding-top padding-bottom">
+		<div class="col-md-6"><section class="detail-dash-title"><h2>Programs:</h2></section></div>
+		<div class="col-md-6">
+			<a href="{{ url_for('createProgramForm') }}" >
+				<button class="btn btn-default button-dept">
+					<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Program
+				</button>
+			</a>
+		</div>
+	</div>
 
 
 <div class="">
 
 			Programs
+			{% if progs %}
 				{% for prog in progs %}
-					<a href = "{{ url_for('programDetail', prog_id = prog.id) }}"> 
-							<div class="movies-list">
-									<h3>{{prog.name}}</h3>
-								</div>
-					</a>
+						<a href = "{{ url_for('programDetail', prog_id = prog.id) }}">
+								<div class="movies-list">
+										<h3>{{prog.name}}</h3>
+									</div>
+						</a>
 				{% endfor %}
-
+			{% else %}
+				<h3>Currently they're no Programs created. Please click on create Program </h3>
+			{% endif %}
 
 	</div>
 {% endblock %}
