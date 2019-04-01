@@ -21,7 +21,7 @@
 	<div class="col-md-6"><section ><h1 class="dept-title">{{course.name}}</h1></section></div>
 	<div class="col-md-6">
 		<a href="{{ url_for('createCourseForm') }}" >
-			<button class="btn btn-default button-dept">
+			<button class="btn btn-default button-detail-dash">
 				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Course
 			</button>
 		</a>
@@ -56,16 +56,22 @@
 									<!-- <th class="table-headings"> Course Number </th> -->
 									<th class=""> Course Name </th>
 							</tr>
-							{% for prereq in course.prereqs %}
+							{% if course.prereqs %}
+								{% for prereq in course.prereqs %}
+									<tr>
+											<td>	<a href="{{ url_for('courseDetail', course_id = prereq.id) }}"> {{prereq.name}} </a>	</td>
+									</tr>
+								{% endfor %}
+							{% else %}
 								<tr>
-										<td>	<a href="{{ url_for('courseDetail', course_id = prereq.id) }}"> {{prereq.name}} </a>	</td>
+										<td> <h3>Currently they're no Prerequiste courses for the specific course</h3>	</td>
 								</tr>
-							{% endfor %}
+							{% endif %}
 						</tbody>
 				</table>
 
 
-			<h4> Corequistes:			</h4>
+			<h3> Corequistes:			</h3>
 
 				<table>
 						<tbody>
@@ -73,11 +79,17 @@
 									<!-- <th class="table-headings"> Course Number </th> -->
 									<th class="table-headings"> Course Name </th>
 							</tr>
-							{% for coreq in course.coreqs %}
+							{% if course.coreqs %}
+								{% for coreq in course.coreqs %}
+									<tr>
+											<td>	<a href="{{ url_for('courseDetail', course_id = coreq.id) }}"> {{coreq.name}} </a>	</td>
+									</tr>
+								{% endfor %}
+							{% else %}
 								<tr>
-										<td>	<a href="{{ url_for('courseDetail', course_id = coreq.id) }}"> {{coreq.name}} </a>	</td>
+										<td> <h3>Currently they're no Co-requiste courses for the specific course</h3>	</td>
 								</tr>
-							{% endfor %}
+							{% endif %}
 						</tbody>
 				</table>
 	</div>

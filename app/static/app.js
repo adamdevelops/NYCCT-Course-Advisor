@@ -20,10 +20,10 @@ $(function(){
     // Trigger function when preq course selection is made and store its value in hidden input
     $preqsubcat.on("change", function() {
         // Show value of selected preq course value
-        // alert($preqsubcat.val())
-        $("#preq").val($preqsubcat.val());
+        alert($preqsubcat.val())
+        $("#prereq").val($preqsubcat.val());
         // Confirm that the selected value was stored in hidden input for preq course
-        // console.log($('#preq').val());
+        console.log($('#prereq').val());
     });
 
     var $coreqcat = $("#cat2"),

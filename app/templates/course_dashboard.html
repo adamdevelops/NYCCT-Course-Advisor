@@ -24,22 +24,30 @@
 
 
 
-<section class="col-md-12"> <h2>Required Courses</h2></section>
+	<div class="container padding-top padding-bottom">
+		<div class="col-md-6"><section class="detail-dash-title"><h2>Courses:</h2></section></div>
+		<div class="col-md-6">
+			<a href="{{ url_for('createCourseForm') }}" >
+				<button class="btn btn-default button-dept">
+					<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Course
+				</button>
+			</a>
+		</div>
+	</div>
 
+	<div class="col-md-12 padding-top">
 
-<div class="">
-
-			Courses
 			{% if courses %}
 				{% for course in courses %}
-					<a href = "{{ url_for('courseDetail', course_id = course.id) }}">
-							<div class="movies-list">
-									<h3>{{course.name}}</h3>
-								</div>
+					<a href = "{{ url_for('courseDetail', course_id = course.id)}}"> <!-- edit later -->
+						<div class="padding-top ">
+							<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{course.name}}</span>
+							<hr />
+						</div>
 					</a>
 				{% endfor %}
 			{% else %}
-				<h3>Currently they're no Courses created. Please click on create Courses </h3>
+				<h3>Currently they're no Courses created. Please click on create Courses. </h3>
 			{% endif %}
 
 

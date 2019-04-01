@@ -273,28 +273,40 @@ def editCourseForm(course_id):
         print(prereqs[0].split(','))
         print('Result of prereqs indexes:')
 
-        for prereq_course_id in prereqs[0].split(','):
-            print(id)
-            print('....')
-            prereq_course = Courses.query.filter_by(id=prereq_course_id).one()
-            print(prereq_course)
-            editedCourse.add_coreq(prereq_course)
+        if not(prereqs[0] == ''):
+            for prereq_course_id in prereqs[0].split(','):
+                print(id)
+                print('....')
+                prereq_course = Courses.query.filter_by(id=prereq_course_id).one()
+                print(prereq_course)
+                editedCourse.add_coreq(prereq_course)
+        else:
+            print('No prereqs')
 
 
-        print('get multivalue')
+        # print('get multivalue')
         coreqs = request.form.getlist('coreq')
         print('Result of coreqs:')
         print(coreqs)
         print(coreqs[0])
-        print(coreqs[0].split(','))
+        # print(coreqs[0].split(','))
+        if not(coreqs == ''):
+            print('empty')
+        if not(coreqs[0] == ''):
+            print('emptier')
         print('Result of coreqs indexes:')
 
-        for coreq_course_id in coreqs[0].split(','):
-            print(id)
-            print('....')
-            coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-            print(coreq_course)
-            editedCourse.add_coreq(coreq_course)
+        if not(coreqs[0] == ''):
+            for coreq_course_id in coreqs[0].split(','):
+                print(coreq_course_id)
+                print('....')
+                if coreq_course_id == '':
+                    print('not empty')
+                coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
+                print(coreq_course)
+                editedCourse.add_coreq(coreq_course)
+        else:
+            print('No coreqs')
 
         db.session.add(editedCourse)
         flash('%s was Successfully Edited' % editedCourse.name)

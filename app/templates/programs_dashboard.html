@@ -31,19 +31,19 @@
 	</div>
 
 
-<div class="">
+	<div class="col-md-12 padding-top">
 
-			Programs
 			{% if progs %}
 				{% for prog in progs %}
-						<a href = "{{ url_for('programDetail', prog_id = prog.id) }}">
-								<div class="movies-list">
-										<h3>{{prog.name}}</h3>
-									</div>
+						<a href = "{{ url_for('programDetail', prog_id = prog.id)}}"> <!-- edit later -->
+							<div class="padding-top ">
+								<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{prog.name}}</span>
+								<hr />
+							</div>
 						</a>
 				{% endfor %}
 			{% else %}
-				<h3>Currently they're no Programs created. Please click on create Program </h3>
+				<h3>Currently they're no Programs created. Please click on create Program. </h3>
 			{% endif %}
 
 	</div>

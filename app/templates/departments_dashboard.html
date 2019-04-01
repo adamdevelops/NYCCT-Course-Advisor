@@ -31,7 +31,7 @@
 
 <div class="col-md-12 padding-top">
 
-		<!-- Categories menu for all program categories -->
+		<!-- Categories menu for all department categories -->
 		{% if depts %}
 			{% for dept in depts %}
 				<a href = "{{ url_for('deptDetail', dept_id = dept.id)}}"> <!-- edit later -->
@@ -42,10 +42,9 @@
 				</a>
 			{% endfor %}
 		{% else %}
-			<h3>Currently they're no Departments created. Please click on create Deparment </h3>
+			<h3>Currently they're no Departments created. Please click on create Department. </h3>
 		{% endif %}
 
-
-
 	</div>
+
 {% endblock %}
