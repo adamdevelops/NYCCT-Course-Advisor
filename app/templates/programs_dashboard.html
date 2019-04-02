@@ -35,7 +35,7 @@
 
 			{% if progs %}
 				{% for prog in progs %}
-						<a href = "{{ url_for('programDetail', prog_id = prog.id)}}"> <!-- edit later -->
+						<a href = "{{ url_for('programDetail', prog_id = prog.id)}}"> 
 							<div class="padding-top ">
 								<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{prog.name}}</span>
 								<hr />

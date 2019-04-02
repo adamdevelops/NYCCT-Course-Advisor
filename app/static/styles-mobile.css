@@ -5,9 +5,8 @@
 
 h1 {
 	font-family: "Helvetica Neue Light", Roboto, Helvetica, Arial, sans-serif;
-	font-size: 50px;
 	color: #51453B;
-	line-height: 60px;
+	font-size: .5em;
 	font-weight: 300;
 }
 
@@ -327,27 +326,4 @@ tr:nth-child(even) {
 
 .movie-item {
 	font-size: 200%;
-}
-
-
-@media only screen and (max-width: 600px) {
-	h1 {
-		font-family: "Helvetica Neue Light", Roboto, Helvetica, Arial, sans-serif;
-		color: #51453B;
-		font-size: 2em;
-		font-weight: 700;
-		margin: 0 !important;
-	}
-
-	.citytech-logo{
-
-	}
-
-	.header-title{
-
-	}
-
-	.detail-dash-title{
-
-	}
 }

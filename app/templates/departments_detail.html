@@ -45,7 +45,7 @@
 
 			<h4>Code: {{dept.code}}</h4>
 
-			<h3>Program ID:
+			<h3>Program Name:
 
 					{% for p in dept.progs %}
 		 				<a href="{{ url_for('programDetail', prog_id = p.id) }}"> {{p.name}} </a>

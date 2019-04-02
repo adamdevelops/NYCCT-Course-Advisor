@@ -90,7 +90,6 @@ def userSignup():
 
 # Departments Dashboard
 @app.route('/depts')
-@login_required
 def deptDashboard():
     courses = Courses.query.all()
     depts = Departments.query.all()
@@ -112,6 +111,7 @@ def createDeptForm():
         return render_template('createdept_form.html')
 
 @app.route('/depts/edit/<int:dept_id>', methods=['GET', 'POST'])
+@login_required
 def editDeptForm(dept_id):
     if request.method == 'POST':
         editedDept = Departments.query.filter_by(id=dept_id).one()
@@ -126,6 +126,7 @@ def editDeptForm(dept_id):
         return render_template('editdept_form.html', dept = editedDept)
 
 @app.route('/depts/delete/<int:dept_id>', methods=['GET', 'POST'])
+@login_required
 def deleteDeptForm(dept_id):
     if request.method == 'POST':
         deletedDept = Departments.query.filter_by(id=dept_id).one()
@@ -154,6 +155,7 @@ def progDashboard():
 
 # CRUD routes for Programs
 @app.route('/programs/create', methods=['GET', 'POST'])
+@login_required
 def createProgramForm():
     if request.method == 'POST':
         name = request.form['name']
@@ -168,6 +170,7 @@ def createProgramForm():
         return render_template('createprogram_form.html')
 
 @app.route('/programs/edit/<int:program_id>', methods=['GET', 'POST'])
+@login_required
 def editProgramForm(program_id):
     if request.method == 'POST':
         editedProgram = Programs.query.filter_by(id=program_id).one()
@@ -183,6 +186,7 @@ def editProgramForm(program_id):
         return render_template('editprogram_form.html', program = editedProgram)
 
 @app.route('/programs/delete/<int:program_id>', methods=['GET', 'POST'])
+@login_required
 def deleteProgramForm(program_id):
     if request.method == 'POST':
         deletedProgram = Programs.query.filter_by(id=program_id).one()
@@ -208,6 +212,7 @@ def courseDashboard():
 
 # CRUD routes for Courses
 @app.route('/courses/create', methods=['GET', 'POST'])
+@login_required
 def createCourseForm():
     if request.method == 'POST':
         name = request.form['name']
@@ -259,6 +264,7 @@ def createCoursePreReqForm(course_id):
         return render_template('createCoursePreReq_form.html', course= newCourse)
 
 @app.route('/courses/edit/<int:course_id>', methods=['GET', 'POST'])
+@login_required
 def editCourseForm(course_id):
     if request.method == 'POST':
         editedCourse = Courses.query.filter_by(id=course_id).one()
@@ -318,6 +324,7 @@ def editCourseForm(course_id):
         return render_template('editCourse_form.html', course = editedCourse, depts = depts)
 
 @app.route('/courses/delete/<int:course_id>', methods=['GET', 'POST'])
+@login_required
 def deleteCourseForm(course_id):
     if request.method == 'POST':
         deletedCourse = Courses.query.filter_by(id=course_id).one()
