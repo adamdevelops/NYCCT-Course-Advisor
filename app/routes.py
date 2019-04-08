@@ -207,7 +207,7 @@ def programDetail(prog_id):
 # Course Dashboard
 @app.route('/courses')
 def courseDashboard():
-    courses = Courses.query.all()
+    courses = Courses.query.order_by(Courses.dept_id).all()
     return render_template('course_dashboard.html', courses = courses)
 
 # CRUD routes for Courses
@@ -340,7 +340,6 @@ def deleteCourseForm(course_id):
 @app.route('/courses/<int:course_id>')
 def courseDetail(course_id):
     Course = Courses.query.filter_by(id=course_id).one()
-    # prereqCourses = Courses.all_prereqs()
     return render_template('course_detail.html', course = Course)
 
 @app.route('/prereq')

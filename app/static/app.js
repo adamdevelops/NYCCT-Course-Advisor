@@ -52,5 +52,20 @@ $(function(){
     });
 
 
+  $('.first-button').on('click', function () {
+
+    $('.animated-icon1').toggleClass('open');
+  });
+
+  function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
+
+
 
 });

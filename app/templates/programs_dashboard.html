@@ -20,8 +20,8 @@
 
 
 	<div class="container padding-top padding-bottom">
-		<div class="col-md-6"><section class="detail-dash-title"><h2>Programs:</h2></section></div>
-		<div class="col-md-6">
+		<div class="col-md-6 col-xs-6"><section class="detail-dash-title"><h2>Programs:</h2></section></div>
+		<div class="col-md-6 col-xs-6">
 			<a href="{{ url_for('createProgramForm') }}" >
 				<button class="btn btn-default button-dept">
 					<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Program
@@ -35,7 +35,7 @@
 
 			{% if progs %}
 				{% for prog in progs %}
-						<a href = "{{ url_for('programDetail', prog_id = prog.id)}}"> 
+						<a href = "{{ url_for('programDetail', prog_id = prog.id)}}">
 							<div class="padding-top ">
 								<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{prog.name}}</span>
 								<hr />
