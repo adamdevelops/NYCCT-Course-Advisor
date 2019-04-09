@@ -19,8 +19,7 @@
 
 
 <div class="container padding-top">
-	<div class="col-md-6"><section ><h1 class="dept-title">{{dept.name}}</h1></section></div>
-	<div class="col-md-6">
+	<div class="col-md-12 crud_buttons">
 		<a class="button-detail-dash" href="{{ url_for('createDeptForm') }}" >
 			<button class="btn btn-default button-detail-dash">
 				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Department
@@ -39,6 +38,20 @@
 			</button>
 		</a>
 	</div>
+
+	<ul class="nav nav-pills crud_buttons_mobile col-xs-12">
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('createDeptForm') }}">New Department</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('editDeptForm', dept_id = dept.id) }}">Edit Department</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('deleteDeptForm', dept_id = dept.id) }}">Delete Department</a>
+		</li>
+	</ul>
+
+	<div class="col-md-12 detail_title"><h1>{{dept.name}}</h1></div>
 </div>
 
 <div class="col-md-12">

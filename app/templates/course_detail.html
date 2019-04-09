@@ -18,7 +18,7 @@
 	</div>
 
 <div class="container padding-top">
-	 <div class="col-md-12 crud_buttons">
+	<div class="col-md-12 crud_buttons">
 		<a href="{{ url_for('createCourseForm') }}" >
 			<button class="btn btn-default button-detail-dash">
 				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Course
@@ -37,35 +37,19 @@
 			</button>
 		</a>
 	</div>
-
-	<!-- <nav class="navbar navbar-light">
-	    <button class="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="#navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon "></span> </button> -->
-	    <!-- <h1 class="navbar-brand mb-0 move-header ">NavBrand</h1> -->
-	    <!-- <div class="collapse width" id="navbarNav">
-	        <ul class="navbar-nav">
-	            <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
-	            <li class="nav-item"> <a class="nav-link" href="#">Features</a> </li>
-	            <li class="nav-item"> <a class="nav-link" href="#">Pricing</a> </li>
-	        </ul>
-	    </div>
-	</nav> -->
-
 	<ul class="nav nav-pills crud_buttons_mobile col-xs-12">
 	  <li class="nav-item">
-	    <a class="nav-link" href="{{ url_for('createCourseForm') }}">New Course</a>
+	    <a class="nav-link" href="{{ url_for('createCourseForm') }}">New {{button_type}}</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit Course</a>
+	    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit {{button_type}}</a>
 	  </li>
 		<li class="nav-item">
-		 <a class="nav-link" href="{{ url_for('deleteCourseForm', course_id = course.id) }}">Delete Course</a>
-	 </li>
+	    <a class="nav-link" href="{{ url_for('deleteCourseForm', course_id = course.id) }}">Delete {{button_type}}</a>
+	  </li>
 	</ul>
-
-
-	<div class="col-md-12 detail-title col-xs-12"><h1>{{course.name}}</h1></div>
+	<div class="col-md-12 detail_title col-xs-12"><h1>{{course.name}}</h1></div>
 </div>
-
 
 <div class="col-md-12">
 

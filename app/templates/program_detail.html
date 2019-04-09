@@ -18,9 +18,8 @@
 	</div>
 
 
-<div class="padding-top">
-	<div class="col-md-7"><section><h2 class="dept-title">{{program.name}}</h2></section></div>
-	<div class="col-md-5">
+<div class="container padding-top">
+	<div class="col-md-12 crud_buttons">
 		<a class="button-detail-dash" href="{{ url_for('createProgramForm') }}" >
 			<button class="btn btn-default button-detail-dash">
 				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Program
@@ -39,6 +38,19 @@
 			</button>
 		</a>
 	</div>
+
+	<ul class="nav nav-pills crud_buttons_mobile col-xs-12">
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('createCourseForm') }}">New Program</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('editProgramForm', program_id = program.id) }}">Edit Program</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{{ url_for('deleteProgramForm', program_id = program.id) }}">Delete Program</a>
+		</li>
+	</ul>
+	<div class="col-md-12 detail_title col-xs-12"><h1>{{program.name}}</h1></div>
 </div>
 
 <div class="col-md-12">

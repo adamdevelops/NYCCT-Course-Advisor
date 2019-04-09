@@ -340,7 +340,8 @@ def deleteCourseForm(course_id):
 @app.route('/courses/<int:course_id>')
 def courseDetail(course_id):
     Course = Courses.query.filter_by(id=course_id).one()
-    return render_template('course_detail.html', course = Course)
+    detail_type = "Course"
+    return render_template('course_detail.html', course = Course, button_type = detail_type)
 
 @app.route('/prereq')
 def prereqDashboard():
