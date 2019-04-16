@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request, url_for
 from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-from app.models import Departments, Programs, Courses, User, Role, coursedept
+from app.models import Departments, Programs, Courses, Schools, User, Role
 from app.forms import LoginForm, SignupForm
 
 
@@ -12,9 +12,9 @@ from app.forms import LoginForm, SignupForm
 @app.route('/dashboard/')
 def creditDashboard():
     depts = Departments.query.all()
-    progs = Courses.query.all()
-    pros = Programs.query.all()
-    return render_template('dashboard.html', depts = depts, courses = progs, pros = pros)
+    courses = Courses.query.all()
+    majors = Programs.query.all()
+    return render_template('dashboard.html', depts = depts, courses = courses, pros = majors)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

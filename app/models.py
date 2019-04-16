@@ -5,10 +5,6 @@ from flask_login import UserMixin
 from hashlib import md5
 from app import login
 
-coursedept = db.Table('coursedept',
-    db.Column('dept_id', db.Integer, db.ForeignKey('departments.id')),
-    db.Column('course_id', db.Integer, db.ForeignKey('courses.id'))
-)
 
 class Departments(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -16,6 +12,7 @@ class Departments(UserMixin, db.Model):
     name = db.Column(db.String(50), nullable=False)
     progs = db.relationship('Programs', backref='dept')
     course_depts = db.relationship('Courses', backref='dept')
+    school_id = db.Column(db.Integer, db.ForeignKey('schools.id'))
     # db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
 #    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
 #    coreq = db.relationship('Coreq', backref='departments', lazy='dynamic')
@@ -31,14 +28,15 @@ class Departments(UserMixin, db.Model):
             'course_depts':self.course_depts
         }
 
-
+# Programs / Majors
 class Programs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    code = db.Column(db.String(8), nullable=False)
     name = db.Column(db.String(50), nullable=False)
-    degree = db.Column(db.String(50), nullable=False)
+    major_short = db.Column(db.String(8), nullable=False)
+    degree_id = db.Column(db.Integer, db.ForeignKey('degree.id'))
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
-    courses = db.relationship('Courses', backref='programs', lazy='dynamic')
+    WI_inmajor = db.Column(db.Boolean)
+    WI_ingened = db.Column(db.Boolean)
     # prereq = db.relationship('Prereq', backref='programs', lazy='dynamic')
     # coreq = db.relationship('Coreq', backref='programs', lazy='dynamic')
 
@@ -50,6 +48,22 @@ class Programs(db.Model):
             'name': self.name,
             'id': self.id,
         }
+
+class Degree(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(50), nullable=False)
+    type_short = db.Column(db.String(4), nullable=False)
+    credits = db.Column(db.Integer, nullable=False)
+    years = db.Column(db.Integer, nullable=False)
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'type': self.type,
+            'id': self.id,
+        }
+
 
 # Database Table for Prereq courses
 prereq = db.Table('prereq',
@@ -123,6 +137,22 @@ class Courses(db.Model):
             'name': self.name,
             'id': self.id,
             'dept_id': self.dept_id
+        }
+
+class Schools(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(25), nullable=False)
+    school_acronym = db.Column(db.String(4), nullable=False)
+    depts = db.relationship('Departments', backref='school')
+
+
+    @property
+    def serialize(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'name': self.name,
+            'id': self.id,
+            'school_acronym': self.school_acronym
         }
 
 class User(UserMixin, db.Model):
