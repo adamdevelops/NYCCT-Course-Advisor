@@ -1,5 +1,5 @@
 from app import app, db
-from app.models import Departments, Programs, Courses, User, Role
+from app.models import Departments, Programs, Courses, Schools, Degree, User, Role
 
 
 # Clear database first
@@ -66,15 +66,16 @@ db.session.add(degree1)
 db.session.add(degree2)
 db.session.commit()
 
-program1 = Programs(name="Electro-Mechanical Engineering Technology", major_short="EMT", dept=dept2, degree=degree1, WI_inmajor=True, WI_ingened=False)
+program1 = Programs(name="Electro-Mechanical Engineering Technology", major_short="EMT", dept=dept2, degree=degree2, WI_inmajor=True, WI_ingened=False)
 
 db.session.add(program1)
 db.session.commit()
 
-program2 = Programs(name="Computer Engineering Technology", major_short="CET", dept=dept1, degree=degree2, WI_inmajor=False, WI_ingened=True)
+program2 = Programs(name="Computer Engineering Technology", major_short="CET", dept=dept1, degree=degree1, WI_inmajor=False, WI_ingened=True)
 
 db.session.add(program2)
 db.session.commit()
+
 
 
 # prereq1 = Prereq(course_code="EM1250", prereq_code="EMT1120")
@@ -88,6 +89,8 @@ db.session.commit()
 # db.session.commit()
 
 print ("added items!")
+
+
 
 ######################
 # Query for departments with EMT code and print courses under that department
