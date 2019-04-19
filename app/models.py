@@ -32,7 +32,7 @@ class Departments(UserMixin, db.Model):
 class Programs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
-    major_short = db.Column(db.String(8), nullable=False)
+    prog_short = db.Column(db.String(8), nullable=False)
     degree_id = db.Column(db.Integer, db.ForeignKey('degree.id'))
     dept_id = db.Column(db.Integer, db.ForeignKey('departments.id'))
     WI_inmajor = db.Column(db.Boolean)

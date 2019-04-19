@@ -10,13 +10,27 @@ db.drop_all()
 db.create_all()
 db.session.commit()
 
-# Database entries for new categories or movies.
-dept1 = Departments(code="CET", name="Comp Eng")
+school1 = Schools(name="Art and Science", school_acronym='SoAS')
+
+db.session.add(school1)
+db.session.commit()
+
+school2 = Schools(name="Technology and Design", school_acronym='SoTD')
+
+db.session.add(school2)
+db.session.commit()
+
+school3 = Schools(name="Professional Studies", school_acronym='SoPS')
+
+db.session.add(school3)
+db.session.commit()
+
+dept1 = Departments(code="CET", name="Comp Eng", school=school1)
 
 db.session.add(dept1)
 db.session.commit()
 
-dept2 = Departments(code="EMT", name="Electromech Eng")
+dept2 = Departments(code="EMT", name="Electromech Eng", school=school2)
 
 db.session.add(dept2)
 db.session.commit()
@@ -45,16 +59,22 @@ course4 = Courses(name="EMT 1120", code="EMT", credits=3, dept=dept2)
 db.session.add(course4)
 db.session.commit()
 
-program1 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology", degree='AAS', dept=dept2)
+degree1 = Degree(type='Bachelors of Technology', type_short='BTech', credits=128, years=4)
+degree2 = Degree(type='Associate of Applied Science', type_short='AAS', credits=64, years=2)
+
+db.session.add(degree1)
+db.session.add(degree2)
+db.session.commit()
+
+program1 = Programs(name="Electro-Mechanical Engineering Technology", major_short="EMT", dept=dept2, degree=degree1, WI_inmajor=True, WI_ingened=False)
 
 db.session.add(program1)
 db.session.commit()
 
-program2 = Programs(code="EMT", name="Electro-Mechanical Engineering Technology", degree='AAS', dept=dept1)
+program2 = Programs(name="Computer Engineering Technology", major_short="CET", dept=dept1, degree=degree2, WI_inmajor=False, WI_ingened=True)
 
-db.session.add(program1)
+db.session.add(program2)
 db.session.commit()
-
 
 
 # prereq1 = Prereq(course_code="EM1250", prereq_code="EMT1120")
