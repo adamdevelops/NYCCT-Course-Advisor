@@ -42,6 +42,5 @@ create_app()
 
 from app import routes, models
 
-db.drop_all()
 db.create_all()
 db.session.commit()
