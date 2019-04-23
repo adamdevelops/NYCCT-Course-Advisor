@@ -77,7 +77,7 @@ db.session.add(program2)
 db.session.commit()
 
 
-
+#
 # prereq1 = Prereq(course_code="EM1250", prereq_code="EMT1120")
 #
 # db.session.add(prereq1)
