@@ -1,4 +1,25 @@
-2019-03-31 20:28:20,145 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-03-28 23:29:26,704 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:36]
+2019-03-29 23:48:05,325 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:36]
+2019-03-29 23:49:34,186 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:36]
+2019-03-30 00:02:47,233 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 00:03:27,732 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 00:05:23,011 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 00:05:50,548 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 01:10:49,108 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 01:30:01,637 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 01:31:11,248 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-30 01:31:58,277 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 17:34:34,888 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 17:36:13,370 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 17:44:39,138 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 17:46:09,889 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 17:56:59,469 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 17:57:43,769 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 18:03:00,138 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 18:09:42,217 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 18:11:15,660 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:27:55,455 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:45:45,373 ERROR: Exception on /courses/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,9 +35,9 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 272, in editCourseForm
     print(prereqs[0])
-TypeError: 'NoneType' object is not subscriptable
-2019-03-31 20:31:44,346 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:32:27,784 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+IndexError: list index out of range
+2019-03-31 19:46:26,771 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:46:31,432 ERROR: Exception on /courses/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -32,9 +53,9 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 272, in editCourseForm
     print(prereqs[0])
-IndexError: string index out of range
-2019-03-31 20:33:17,313 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:33:36,176 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+IndexError: list index out of range
+2019-03-31 19:47:39,430 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:47:43,550 ERROR: Exception on /courses/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -48,14 +69,11 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 279, in editCourseForm
-    prereq_course = Courses.query.filter_by(id=prereq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 20:35:55,646 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:37:53,061 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:40:14,850 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 276, in editCourseForm
+    for prereq_course_id in prereqs[0].split(','):
+IndexError: list index out of range
+2019-03-31 19:48:20,296 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:48:22,316 ERROR: Exception on /courses/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -69,13 +87,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 279, in editCourseForm
-    prereq_course = Courses.query.filter_by(id=prereq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 20:41:06,297 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:41:33,229 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 276, in editCourseForm
+    for prereq_course_id in prereqs[0].split(','):
+IndexError: list index out of range
+2019-03-31 19:48:36,597 ERROR: Exception on /courses/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -89,13 +104,11 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 295, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 20:44:51,936 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:45:18,529 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 276, in editCourseForm
+    for prereq_course_id in prereqs[0].split(','):
+IndexError: list index out of range
+2019-03-31 19:49:00,048 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:49:29,676 ERROR: Exception on /courses/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -109,28 +122,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 297, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 20:45:56,569 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 20:46:14,380 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 297, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 272, in editCourseForm
+    print(prereqs[0])
+IndexError: list index out of range
+2019-03-31 19:50:49,542 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-03-31 19:50:57,389 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
