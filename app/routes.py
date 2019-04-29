@@ -243,7 +243,7 @@ def createCourseForm():
     else:
         depts = Departments.query.all()
         courses = Courses.query.all()
-        return render_template('createCourse_form.html', depts = depts, courses = courses)
+        return render_template('createcourse_form.html', depts = depts, courses = courses)
 
 @app.route('/courses/create/<int:course_id>', methods=['GET', 'POST'])
 def createCoursePreReqForm(course_id):
