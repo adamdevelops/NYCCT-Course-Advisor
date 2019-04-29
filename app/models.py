@@ -14,7 +14,7 @@ class Departments(UserMixin, db.Model):
     course_depts = db.relationship('Courses', backref='dept')
     schools = db.Column(db.Integer, db.ForeignKey('school.id'))
     # db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
-#    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
+#   prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
 #    coreq = db.relationship('Coreq', backref='departments', lazy='dynamic')
 
 
