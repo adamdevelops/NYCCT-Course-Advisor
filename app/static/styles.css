@@ -118,24 +118,34 @@ tr:nth-child(even) {
 	font-weight: 400;
 }
 
+a btn{
+	text-decoration: none
+}
+
 .btn {
 	padding: 20px;
 	margin: 0;
 	border-color: #42C3C9;
 	border-width: 2px;
 	/* color: #42C3C9; */
+	text-decoration: none;
 }
 .btn:hover {
 	border-color: #42C3C9;
 }
 .btn.delete {
 	border-color: #42C3C9;
-	color: #aaaaaa;
 }
 .btn.delete:hover {
 	border-color: #42C3C9;
 	color: red;
 }
+
+.btn.save:hover {
+	border-color: #42C3C9;
+	color: green;
+}
+
 .glyphicon {
 	margin-right: 10px;
 }
