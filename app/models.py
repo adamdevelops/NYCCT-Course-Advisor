@@ -12,7 +12,7 @@ class Departments(UserMixin, db.Model):
     name = db.Column(db.String(50), nullable=False)
     progs = db.relationship('Programs', backref='dept')
     course_depts = db.relationship('Courses', backref='dept')
-    school_id = db.Column(db.Integer, db.ForeignKey('school.id'))
+    schools = db.Column(db.Integer, db.ForeignKey('school.id'))
     # db.relationship('Courses', secondary=coursedept,  backref='course_department', lazy='dynamic')
 #    prereq = db.relationship('Prereq', backref='departments', lazy='dynamic')
 #    coreq = db.relationship('Coreq', backref='departments', lazy='dynamic')
