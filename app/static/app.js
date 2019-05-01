@@ -26,6 +26,16 @@ $(function(){
         console.log($('#prereq').val());
     });
 
+    // Cancel button for Preqs
+    // Clear multiselect options for preqs
+    $('#cancelpreq').click(function(){
+      // alert("Cancel");
+      // Show value of selected preq course value
+      $("#prereq").val("");
+      // Confirm that the selected value was stored in hidden input for preq course
+      // console.log($('#prereq').val());
+    });
+
     var $coreqcat = $("#cat2"),
         $coreqsubcat = $("#subcat2");
 
@@ -45,10 +55,18 @@ $(function(){
 
     $coreqsubcat.on("change", function() {
       //  Show value of selected preq course value
-     //  alert($coreqsubcat.val())
-        $("#coreq").val($coreqsubcat.val());
+      alert($coreqsubcat.val())
+      $("#coreq").val($coreqsubcat.val());
     //    Confirm that the selected value was stored in hidden input for preq course
-    //    console.log($('#preq').val());
+       console.log($('#coreq').val());
+    });
+
+    // Cancel button for Coreqs
+    // Clear multiselect options for coreqs
+    $('#cancelcoreq').click(function() {
+        // alert("Cancel");
+        $("#coreq").val("");
+        // console.log($('#coreq').val());
     });
 
 
