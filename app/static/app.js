@@ -66,7 +66,7 @@ $(function(){
     $('#cancelcoreq').click(function() {
         // alert("Cancel");
         $("#coreq").val("");
-        // console.log($('#coreq').val());
+        console.log($('#coreq').val());
     });
 
 

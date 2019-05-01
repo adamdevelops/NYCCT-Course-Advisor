@@ -146,6 +146,10 @@ a btn{
 	color: green;
 }
 
+.cancel_button{
+	display: inline;
+}
+
 .glyphicon {
 	margin-right: 10px;
 }
