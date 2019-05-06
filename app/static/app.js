@@ -33,7 +33,7 @@ $(function(){
       // Show value of selected preq course value
       $("#prereq").val("");
       // Confirm that the selected value was stored in hidden input for preq course
-      // console.log($('#prereq').val());
+      console.log($('#prereq').val());
     });
 
     var $coreqcat = $("#cat2"),

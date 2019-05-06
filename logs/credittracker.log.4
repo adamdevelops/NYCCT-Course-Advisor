@@ -1,4 +1,4 @@
-2019-04-09 13:25:12,444 ERROR: Exception on /depts/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-04-12 14:50:11,324 ERROR: Exception on /login [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,30 +12,54 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 147, in deptDetail
-    return render_template('departments_detail.html', dept = department)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 47, in block "content"
-    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit Department</a>
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'course' is undefined
-2019-04-09 13:25:26,713 ERROR: Exception on /depts/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 26, in login
+    user = User.userExists(form.username.data)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\models.py", line 178, in userExists
+    u = User.query.filter_by(username=user).first()
+  File "c:\python36\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
+    mapper = orm.class_mapper(type)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
+    mapper._configure_all()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\mapper.py", line 1268, in _configure_all
+    configure_mappers()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\mapper.py", line 3013, in configure_mappers
+    mapper._post_configure_properties()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\mapper.py", line 1811, in _post_configure_properties
+    prop.init()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\interfaces.py", line 184, in init
+    self.do_init()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\relationships.py", line 1659, in do_init
+    self._generate_backref()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\relationships.py", line 1849, in _generate_backref
+    (backref_key, self, m))
+sqlalchemy.exc.ArgumentError: Error creating backref 'school' on relationship 'Schools.dept': property of that name exists on mapper 'Mapper|Departments|departments'
+2019-04-12 15:01:55,958 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-12 15:02:34,457 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-12 15:02:41,999 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-12 17:08:02,812 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-12 17:08:22,185 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:33:20,266 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:44:40,752 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:44:56,286 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:45:13,275 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:49:47,471 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:49:59,456 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:55:57,355 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:58:17,487 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 14:58:27,620 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 15:03:59,342 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:43:29,923 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:43:40,963 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:44:19,118 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:44:22,022 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:44:49,117 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:44:53,307 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:44:58,273 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-15 21:45:26,426 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-16 14:45:58,339 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-16 14:46:40,626 ERROR: Exception on /courses/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -49,32 +73,23 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 147, in deptDetail
-    return render_template('departments_detail.html', dept = department)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 47, in block "content"
-    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit Department</a>
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'course' is undefined
-2019-04-09 13:26:20,914 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-09 13:39:37,225 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-09 13:39:44,790 ERROR: Exception on /programs/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 342, in courseDetail
+    Course = Courses.query.filter_by(id=course_id).one()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
+    raise orm_exc.NoResultFound("No row was found for one()")
+sqlalchemy.orm.exc.NoResultFound: No row was found for one()
+2019-04-18 21:29:08,911 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-18 21:41:06,114 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-18 21:41:07,708 ERROR: Exception on / [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: programs.prog_short
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,30 +103,30 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 205, in programDetail
-    return render_template('program_detail.html', program = Program)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 16, in creditDashboard
+    majors = Programs.query.all()
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2726, in all
+    return list(self)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2878, in __iter__
+    return self._execute_and_instances(context)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2901, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "c:\python36\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
+    context)
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\program_detail.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\program_detail.html", line 47, in block "content"
-    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit {{button_type}}</a>
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'course' is undefined
-2019-04-09 13:40:38,409 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-09 13:41:04,098 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-10 17:50:40,994 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-12 14:47:32,727 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
+    context)
+  File "c:\python36\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: programs.prog_short [SQL: 'SELECT programs.id AS programs_id, programs.name AS programs_name, programs.prog_short AS programs_prog_short, programs.degree_id AS programs_degree_id, programs.dept_id AS programs_dept_id, programs."WI_inmajor" AS "programs_WI_inmajor", programs."WI_ingened" AS "programs_WI_ingened" \nFROM programs'] (Background on this error at: http://sqlalche.me/e/e3q8)

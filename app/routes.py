@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, request, url_for
 from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-from app.models import Departments, Programs, Courses, Schools, User, Role
+from app.models import Departments, Programs, Courses, Degree, Schools, User, Role
 from app.forms import LoginForm, SignupForm
 
 
@@ -159,15 +159,17 @@ def progDashboard():
 def createProgramForm():
     if request.method == 'POST':
         name = request.form['name']
-        code = request.form['code']
-        degree = request.form['degree']
-        newProgram = Programs(name = name, code= code, degree = degree)
+        major_short = request.form['major_short']
+        degree_id = request.form['degree']
+        degree = Degree.query.filter_by(id=degree_id).one()
+        newProgram = Programs(name = name, major_short= major_short, degree = degree)
         db.session.add(newProgram)
         flash('%s was Successfully Created' % newProgram.name)
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        return render_template('createprogram_form.html')
+        degrees = Degree.query.all()
+        return render_template('createprogram_form.html', degrees=degrees)
 
 @app.route('/programs/edit/<int:program_id>', methods=['GET', 'POST'])
 @login_required

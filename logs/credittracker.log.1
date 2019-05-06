@@ -1,79 +1,4 @@
-2019-04-29 14:38:26,147 ERROR: Exception on / [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 14, in creditDashboard
-    depts = Departments.query.all()
-  File "c:\python36\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
-    mapper = orm.class_mapper(type)
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\base.py", line 400, in _inspect_mapped_class
-    mapper._configure_all()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\mapper.py", line 1268, in _configure_all
-    configure_mappers()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\mapper.py", line 3013, in configure_mappers
-    mapper._post_configure_properties()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\mapper.py", line 1811, in _post_configure_properties
-    prop.init()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\interfaces.py", line 184, in init
-    self.do_init()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\relationships.py", line 1659, in do_init
-    self._generate_backref()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\relationships.py", line 1849, in _generate_backref
-    (backref_key, self, m))
-sqlalchemy.exc.ArgumentError: Error creating backref 'schools' on relationship 'Schools.depts': property of that name exists on mapper 'Mapper|Departments|departments'
-2019-04-29 14:44:38,432 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:45:05,153 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:45:10,394 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:45:31,473 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:48:26,409 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:48:33,839 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:53:43,538 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:54:48,091 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:56:02,585 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:56:50,009 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:57:37,517 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:58:08,599 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:58:25,357 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:59:18,333 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 14:59:53,645 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 15:02:36,022 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 15:05:45,331 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 15:08:39,857 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 15:20:47,678 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-29 15:21:12,124 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 14:53:35,244 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 14:58:56,051 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:09:52,334 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:11:23,208 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:12:46,917 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:14:30,435 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:15:58,608 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:21:58,357 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:25:10,813 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:25:33,748 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 15:25:48,426 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:50:38,965 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:54:40,462 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:55:03,925 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:55:12,159 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:56:01,176 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:56:48,107 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:57:43,099 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-30 21:58:32,592 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-01 14:28:04,327 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-01 14:31:38,438 ERROR: Exception on /courses/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-05-01 14:41:22,691 ERROR: Exception on /courses/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -92,7 +17,7 @@ Traceback (most recent call last):
   File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 229, in createCourseForm
     newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
 ValueError: invalid literal for int() with base 10: ''
-2019-05-01 14:39:12,332 ERROR: Exception on /courses/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-05-01 14:42:35,933 ERROR: Exception on /courses/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -111,4 +36,104 @@ Traceback (most recent call last):
   File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 229, in createCourseForm
     newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
 ValueError: invalid literal for int() with base 10: ''
-2019-05-01 14:40:51,122 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:43:59,409 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:51:32,424 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:52:35,239 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:53:19,342 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:56:58,222 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:58:22,502 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 17:22:07,461 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 17:23:55,296 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 17:50:30,524 ERROR: Exception on /programs/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 164, in createProgramForm
+    newProgram = Programs(name = name, code= code, degree = degree)
+  File "<string>", line 4, in __init__
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 417, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 414, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "c:\python36\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 699, in _declarative_constructor
+    (k, cls_.__name__))
+TypeError: 'code' is an invalid keyword argument for Programs
+2019-05-01 17:50:49,664 ERROR: Exception on /programs/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 164, in createProgramForm
+    newProgram = Programs(name = name, code= code, degree = degree)
+  File "<string>", line 4, in __init__
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 417, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 414, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "c:\python36\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 699, in _declarative_constructor
+    (k, cls_.__name__))
+TypeError: 'code' is an invalid keyword argument for Programs
+2019-05-05 21:13:25,525 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-06 14:43:52,040 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-06 14:47:57,669 ERROR: Exception on /programs/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 164, in createProgramForm
+    newProgram = Programs(name = name, code= code, degree = degree)
+  File "<string>", line 4, in __init__
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 417, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 414, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "c:\python36\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 699, in _declarative_constructor
+    (k, cls_.__name__))
+TypeError: 'code' is an invalid keyword argument for Programs
+2019-05-06 14:55:51,915 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
