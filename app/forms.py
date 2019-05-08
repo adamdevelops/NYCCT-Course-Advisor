@@ -25,3 +25,10 @@ class SignupForm(FlaskForm):
         email = User.query.filter_by(email=email.data).first()
         if email is not None:
             raise ValidationError('Please use another email.')
+
+class createProgramForm(FlaskForm):
+    name = StringField('Username', validators=[DataRequired()])
+    major_short = StringField('Username', validators=[DataRequired()])
+    degree = StringField('Username', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Log In')

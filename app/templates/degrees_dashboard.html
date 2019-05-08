@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+
+<!-- Flash message that shows messages of the CRUD actions done within the website -->
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	    {% endif %}
+	  {% endwith %}
+	</div>
+
+
+<div class="container padding-top padding-bottom">
+	<div class="col-md-6 col-xs-6"><section class="detail-dash-title"><h3>Degrees:</h3></section></div>
+	<div class="col-md-6 col-xs-6">
+		<a >
+			<button class="btn btn-default button-dept">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New Degree
+			</button>
+		</a>
+	</div>
+</div>
+
+<div class="col-md-12 padding-top">
+
+		<!-- Categories menu for all department categories -->
+		{% if degrees %}
+			{% for degree in degrees %}
+				<a>
+					<div class="padding-top">
+						<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{degree.type}}</span>
+						<hr />
+					</div>
+				</a>
+			{% endfor %}
+		{% else %}
+			<h3>Currently they're no Degrees created. Please click on create Degree. </h3>
+		{% endif %}
+
+	</div>
+
+{% endblock %}

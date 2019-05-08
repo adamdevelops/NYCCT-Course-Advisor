@@ -27,6 +27,7 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
+        print (form.remember_me.data)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -344,6 +345,16 @@ def courseDetail(course_id):
     Course = Courses.query.filter_by(id=course_id).one()
     detail_type = "Course"
     return render_template('course_detail.html', course = Course, button_type = detail_type)
+
+@app.route('/schools')
+def schoolDashboard():
+    schools = Schools.query.all()
+    return render_template('schools_dashboard.html', schools = schools)
+
+@app.route('/degrees')
+def degreeDashboard():
+    degrees = Degree.query.all()
+    return render_template('degrees_dashboard.html', degrees = degrees)
 
 @app.route('/prereq')
 def prereqDashboard():

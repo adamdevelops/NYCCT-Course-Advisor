@@ -1,4 +1,4 @@
-2019-04-12 14:50:11,324 ERROR: Exception on /login [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-04-29 14:38:26,147 ERROR: Exception on / [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,10 +12,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 26, in login
-    user = User.userExists(form.username.data)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\models.py", line 178, in userExists
-    u = User.query.filter_by(username=user).first()
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 14, in creditDashboard
+    depts = Departments.query.all()
   File "c:\python36\lib\site-packages\flask_sqlalchemy\__init__.py", line 512, in __get__
     mapper = orm.class_mapper(type)
   File "c:\python36\lib\site-packages\sqlalchemy\orm\base.py", line 421, in class_mapper
@@ -34,32 +32,48 @@ Traceback (most recent call last):
     self._generate_backref()
   File "c:\python36\lib\site-packages\sqlalchemy\orm\relationships.py", line 1849, in _generate_backref
     (backref_key, self, m))
-sqlalchemy.exc.ArgumentError: Error creating backref 'school' on relationship 'Schools.dept': property of that name exists on mapper 'Mapper|Departments|departments'
-2019-04-12 15:01:55,958 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-12 15:02:34,457 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-12 15:02:41,999 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-12 17:08:02,812 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-12 17:08:22,185 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:33:20,266 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:44:40,752 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:44:56,286 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:45:13,275 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:49:47,471 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:49:59,456 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:55:57,355 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:58:17,487 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 14:58:27,620 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 15:03:59,342 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:43:29,923 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:43:40,963 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:44:19,118 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:44:22,022 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:44:49,117 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:44:53,307 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:44:58,273 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-15 21:45:26,426 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-16 14:45:58,339 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-16 14:46:40,626 ERROR: Exception on /courses/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+sqlalchemy.exc.ArgumentError: Error creating backref 'schools' on relationship 'Schools.depts': property of that name exists on mapper 'Mapper|Departments|departments'
+2019-04-29 14:44:38,432 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:45:05,153 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:45:10,394 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:45:31,473 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:48:26,409 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:48:33,839 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:53:43,538 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:54:48,091 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:56:02,585 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:56:50,009 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:57:37,517 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:58:08,599 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:58:25,357 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:59:18,333 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 14:59:53,645 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 15:02:36,022 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 15:05:45,331 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 15:08:39,857 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 15:20:47,678 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-29 15:21:12,124 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 14:53:35,244 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 14:58:56,051 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:09:52,334 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:11:23,208 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:12:46,917 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:14:30,435 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:15:58,608 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:21:58,357 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:25:10,813 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:25:33,748 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 15:25:48,426 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:50:38,965 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:54:40,462 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:55:03,925 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:55:12,159 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:56:01,176 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:56:48,107 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:57:43,099 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-30 21:58:32,592 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:28:04,327 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-05-01 14:31:38,438 ERROR: Exception on /courses/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -73,23 +87,12 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 342, in courseDetail
-    Course = Courses.query.filter_by(id=course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-04-18 21:29:08,911 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-18 21:41:06,114 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-04-18 21:41:07,708 ERROR: Exception on / [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such column: programs.prog_short
-
-The above exception was the direct cause of the following exception:
-
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 229, in createCourseForm
+    newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
+ValueError: invalid literal for int() with base 10: ''
+2019-05-01 14:39:12,332 ERROR: Exception on /courses/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -103,30 +106,9 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 16, in creditDashboard
-    majors = Programs.query.all()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2726, in all
-    return list(self)
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2878, in __iter__
-    return self._execute_and_instances(context)
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2901, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "c:\python36\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
-    raise value.with_traceback(tb)
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "c:\python36\lib\site-packages\sqlalchemy\engine\default.py", line 507, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: programs.prog_short [SQL: 'SELECT programs.id AS programs_id, programs.name AS programs_name, programs.prog_short AS programs_prog_short, programs.degree_id AS programs_degree_id, programs.dept_id AS programs_dept_id, programs."WI_inmajor" AS "programs_WI_inmajor", programs."WI_ingened" AS "programs_WI_ingened" \nFROM programs'] (Background on this error at: http://sqlalche.me/e/e3q8)
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 229, in createCourseForm
+    newCourse = Courses(name = name, code= code, credits = int(credits), dept = dept)
+ValueError: invalid literal for int() with base 10: ''
+2019-05-01 14:40:51,122 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
