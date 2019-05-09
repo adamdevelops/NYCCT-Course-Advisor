@@ -351,6 +351,11 @@ def schoolDashboard():
     schools = Schools.query.all()
     return render_template('schools_dashboard.html', schools = schools)
 
+@app.route('/schools/<int:school_id>')
+def schoolDetail(school_id):
+    school = Schools.query.filter_by(id=school_id).one()
+    return render_template('school_detail.html', school = school)
+
 @app.route('/degrees')
 def degreeDashboard():
     degrees = Degree.query.all()

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+
+<!-- Flash message that shows messages of the CRUD actions done within the website -->
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+	    {% if messages %}
+	        <ul>
+	        {% for message in messages %}
+	            <li> <strong> {{ message }} </strong> </li>
+	        {% endfor %}
+	        </ul>
+	    {% endif %}
+	  {% endwith %}
+	</div>
+
+<div class="container padding-top">
+	<div class="col-md-12 crud_buttons">
+		<a href="" >
+			<button class="btn btn-default button-detail-dash">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  New School
+			</button>
+		</a>
+
+		<a class="button-detail-dash" href="" >
+			<button class="btn btn-default button-detail-dash">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Edit School
+			</button>
+		</a>
+
+		<a class="button-detail-dash" href="" >
+			<button class="btn btn-default button-detail-dash">
+				<span class="glyphicons glyphicons-film" aria-hidden="true"></span>  Delete School
+			</button>
+		</a>
+	</div>
+	<ul class="nav nav-pills crud_buttons_mobile col-xs-12">
+	  <li class="nav-item">
+	    <a class="nav-link" href="{{ url_for('createCourseForm') }}">New School</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="">Edit School</a>
+	  </li>
+		<li class="nav-item">
+	    <a class="nav-link" href="">Delete School</a>
+	  </li>
+	</ul>
+	<div class="col-md-12 detail_title col-xs-12"><h1>{{school.name}}</h1></div>
+</div>
+
+<div class="col-md-12">
+
+			<h3>School Acronym: {{school.school_acronym}}</h3>
+
+	</div>
+{% endblock %}
