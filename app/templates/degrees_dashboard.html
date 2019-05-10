@@ -34,7 +34,7 @@
 		<!-- Categories menu for all department categories -->
 		{% if degrees %}
 			{% for degree in degrees %}
-				<a>
+				<a href="{{ url_for('degreeDetail', degree_id = degree.id)}}">
 					<div class="padding-top">
 						<i class="glyphicon glyphicon-chevron-right" ></i><span class="dept-dash-names">{{degree.type}}</span>
 						<hr />

@@ -361,6 +361,11 @@ def degreeDashboard():
     degrees = Degree.query.all()
     return render_template('degrees_dashboard.html', degrees = degrees)
 
+@app.route('/degrees/<int:degree_id>')
+def degreeDetail(degree_id):
+    degree = Degree.query.filter_by(id=degree_id).one()
+    return render_template('degree_detail.html', degree = degree)
+
 @app.route('/prereq')
 def prereqDashboard():
     courses = session.query(Prereq).limit(10).all()
