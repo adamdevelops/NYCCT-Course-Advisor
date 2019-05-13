@@ -186,7 +186,8 @@ def editProgramForm(program_id):
         return redirect(url_for('creditDashboard'))
     else:
         editedProgram = Programs.query.filter_by(id=program_id).one()
-        return render_template('editprogram_form.html', program = editedProgram)
+        degrees = Degree.query.all()
+        return render_template('editprogram_form.html', program = editedProgram, degrees=degrees)
 
 @app.route('/programs/delete/<int:program_id>', methods=['GET', 'POST'])
 @login_required

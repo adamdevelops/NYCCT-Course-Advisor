@@ -4,30 +4,40 @@
 
 
 
-<!-- Flash message that shows messages of the CRUD actions done within the website -->
+<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<div class=""><h1>Edit Department:</h1></div>
+		</div>
+</div>
 
 
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<form action="{{ url_for('editDeptForm', dept_id = dept.id)}}" method = "post">
+						<div class="form-group">
 
-	<form action="{{ url_for('editDeptForm', dept_id = dept.id)}}" method = "post">
-					<div class="form-group">
+								<label for="name">Name:</label>
+								<input type ="text" maxlength="80" class="form-control" name="name" value="{{dept.name}}">
 
-							<label for="name">Name:</label>
-							<input type ="text" maxlength="80" class="form-control" name="name" value="{{dept.name}}">
+								<label for="name">Code:</label>
+								<input type ="text" maxlength="80" class="form-control" name="code" value="{{dept.code}}">
 
-							<label for="name">Code:</label>
-							<input type ="text" maxlength="80" class="form-control" name="code" value="{{dept.code}}">
+								<br /> <br />
 
-							<button type="submit" class="btn btn-default save" id="submit" type="submit">
-							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
+								<button type="submit" class="btn btn-default save" id="submit" type="submit">
+								<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
 
-							<a href = '{{url_for('creditDashboard')}}'>
-								<button type="button" class="btn btn-default delete">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
-								</button>
-							</a>
+								<a href = '{{url_for('creditDashboard')}}'>
+									<button type="button" class="btn btn-default delete">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+									</button>
+								</a>
+						</div>
+		</form>
 
-					</div>
-	</form>
+	</div>
+</div>
+
 
 
 

@@ -4,33 +4,48 @@
 
 
 
-<!-- Flash message that shows messages of the CRUD actions done within the website -->
+<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<div class=""><h1>Edit Program:</h1></div>
+		</div>
+</div>
 
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<form action="{{ url_for('editProgramForm', program_id = program.id)}}" method = "post">
+						<div class="form-group">
 
+								<label for="name">Name:</label>
+								<input type ="text" maxlength="80" class="form-control" name="name" value="{{program.name}}">
 
-	<form action="{{ url_for('editProgramForm', program_id = program.id)}}" method = "post">
-					<div class="form-group">
+								<label for="name">Code:</label>
+								<input type ="text" maxlength="80" class="form-control" name="code" value="{{program.code}}">
 
-							<label for="name">Name:</label>
-							<input type ="text" maxlength="80" class="form-control" name="name" value="{{program.name}}">
+								<label for="name">Current Selected Degree:</label>
+								<input type ="text" maxlength="80" class="form-control" name="current_degree" value="{{program.degree.type}}">
 
-							<label for="name">Code:</label>
-							<input type ="text" maxlength="80" class="form-control" name="code" value="{{program.code}}">
+								<label for="name">New Degree:</label>
+								<select name="degree">
+									{% for degree in degrees %}
+				 						<option value="{{degree.id}}">{{degree.type}}</option>
+			 					 	{% endfor %}
+							  </select>
 
-							<label for="name">Degree:</label>
-							<input type ="text" maxlength="80" class="form-control" name="degree" value="{{program.degree}}">
+								<br  /> <br  />
 
-							<button type="submit" class="btn btn-default save" id="submit" type="submit">
-							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
+								<button type="submit" class="btn btn-default save" id="submit" type="submit">
+								<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
 
-							<a href = '{{url_for('creditDashboard')}}'>
-								<button type="button" class="btn btn-default delete">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
-								</button>
-							</a>
+								<a href = '{{url_for('creditDashboard')}}'>
+									<button type="button" class="btn btn-default delete">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+									</button>
+								</a>
 
-					</div>
-	</form>
+						</div>
+		</form>
+	</div>
+</div>
 
 
 

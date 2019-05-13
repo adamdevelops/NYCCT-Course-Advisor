@@ -4,47 +4,54 @@
 
 
 
-<!-- Flash message that shows messages of the CRUD actions done within the website -->
+<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<div class=""><h1>Edit Course:</h1></div>
+		</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<form action="{{ url_for('editCourseForm', course_id = course.id)}}" method = "post">
+						<div class="form-group">
+
+								<label for="name">Name:</label>
+								<input type ="text" maxlength="80" class="form-control" name="name" value="{{course.name}}">
+
+								<label for="name">Code:</label>
+								<input type ="text" maxlength="80" class="form-control" name="code" value="{{course.code}}">
+
+								<label for="name">Credits:</label>
+								<input type ="text" maxlength="80" class="form-control" name="credits" value="{{course.credits}}">
+
+								<label for="name">Prereq:</label>   <br />
+								<a href="" data-toggle="modal" data-target="#preqModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
+
+								<input type="hidden" id="prereq" name="prereq" /> <br />
+
+								<label for="name">Coreq:</label>   <br />
+								<a href="" data-toggle="modal" data-target="#coreqModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
+
+								<input type="hidden" id="coreq" name="coreq" />
 
 
 
-	<form action="{{ url_for('editCourseForm', course_id = course.id)}}" method = "post">
-					<div class="form-group">
+								<br /><br />
 
-							<label for="name">Name:</label>
-							<input type ="text" maxlength="80" class="form-control" name="name" value="{{course.name}}">
+								<button type="submit" class="btn btn-default save" id="submit" type="submit">
+								<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
 
-							<label for="name">Code:</label>
-							<input type ="text" maxlength="80" class="form-control" name="code" value="{{course.code}}">
+								<a href = '{{url_for('creditDashboard')}}'>
+									<button type="button" class="btn btn-default delete">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+									</button>
+								</a>
 
-							<label for="name">Credits:</label>
-							<input type ="text" maxlength="80" class="form-control" name="credits" value="{{course.credits}}">
+						</div>
+		</form>
+	</div>
+</div>
 
-							<label for="name">Prereq:</label>   <br />
-							<a href="" data-toggle="modal" data-target="#preqModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
-
-							<input type="hidden" id="prereq" name="prereq" /> <br />
-
-							<label for="name">Coreq:</label>   <br />
-							<a href="" data-toggle="modal" data-target="#coreqModal"><img src="/static/icons8-plus.png" class="button-add" ></img></a>
-
-							<input type="hidden" id="coreq" name="coreq" />
-
-
-
-							<br /><br />
-
-							<button type="submit" class="btn btn-default save" id="submit" type="submit">
-							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>Save</button>
-
-							<a href = '{{url_for('creditDashboard')}}'>
-								<button type="button" class="btn btn-default delete">
-									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
-								</button>
-							</a>
-
-					</div>
-	</form>
 
 
 
