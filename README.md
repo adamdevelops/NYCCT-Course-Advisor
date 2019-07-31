@@ -41,7 +41,6 @@ venv (virtual enviroment holding the requirement packages above)
 
 Here is how to get the development env setup.
 
-```
 1. Install Python if it is not installed already.
 2. If you have Python3 installed then you create a virtual enviroment with 
 ```
@@ -61,7 +60,6 @@ virtualenv venv
 	pip install -r requirements.txt
 
 
-```
 
 ## Running the tests
 
