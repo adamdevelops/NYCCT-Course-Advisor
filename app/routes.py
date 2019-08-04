@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, request, url_for
 from app import app, db
 from flask_login import current_user, login_user, logout_user, login_required
+from flask_user import roles_required, UserManager
 from werkzeug.urls import url_parse
 from app.models import Departments, Programs, Courses, Degree, Schools, User, Role
 from app.forms import LoginForm, SignupForm
@@ -22,6 +23,7 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('creditDashboard'))
     form = LoginForm()
+    # form.['language'].choices = [(d.id, d.name) for d in depts]
     if form.validate_on_submit():
         user = User.userExists(form.username.data)
         if user is None or not user.check_password(form.password.data):
@@ -99,6 +101,7 @@ def deptDashboard():
 
 # CRUD routes for Departments
 @app.route('/depts/create', methods=['GET', 'POST'])
+# @roles_required('Advisor')
 def createDeptForm():
     if request.method == 'POST':
         name = request.form['name']
@@ -109,7 +112,11 @@ def createDeptForm():
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        return render_template('createdept_form.html')
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            return render_template('createdept_form.html')
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 @app.route('/depts/edit/<int:dept_id>', methods=['GET', 'POST'])
 @login_required
@@ -123,8 +130,12 @@ def editDeptForm(dept_id):
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        editedDept = Departments.query.filter_by(id=dept_id).one()
-        return render_template('editdept_form.html', dept = editedDept)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            editedDept = Departments.query.filter_by(id=dept_id).one()
+            return render_template('editdept_form.html', dept = editedDept)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 @app.route('/depts/delete/<int:dept_id>', methods=['GET', 'POST'])
 @login_required
@@ -136,8 +147,12 @@ def deleteDeptForm(dept_id):
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        deletedDept = Departments.query.filter_by(id=dept_id).one()
-        return render_template('deletedept_form.html', dept = deletedDept)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            deletedDept = Departments.query.filter_by(id=dept_id).one()
+            return render_template('deletedept_form.html', dept = deletedDept)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 # Specific Department Page
 @app.route('/depts/<int:dept_id>')
@@ -169,8 +184,12 @@ def createProgramForm():
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        degrees = Degree.query.all()
-        return render_template('createprogram_form.html', degrees=degrees)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            degrees = Degree.query.all()
+            return render_template('createprogram_form.html', degrees=degrees)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 @app.route('/programs/edit/<int:program_id>', methods=['GET', 'POST'])
 @login_required
@@ -179,15 +198,23 @@ def editProgramForm(program_id):
         editedProgram = Programs.query.filter_by(id=program_id).one()
         editedProgram.name = request.form['name']
         editedProgram.code = request.form['code']
-        editedProgram.degree = request.form['degree']
+        degree_id = request.form['degree']
+        degree = Degree.query.filter_by(id=degree_id).one()
+        editedProgram.degree = degree
+        print('editprogram object')
+        print(editedProgram)
         db.session.add(editedProgram)
         flash('%s was Successfully Edited' % editedProgram.name)
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        editedProgram = Programs.query.filter_by(id=program_id).one()
-        degrees = Degree.query.all()
-        return render_template('editprogram_form.html', program = editedProgram, degrees=degrees)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            editedProgram = Programs.query.filter_by(id=program_id).one()
+            degrees = Degree.query.all()
+            return render_template('editprogram_form.html', program = editedProgram, degrees=degrees)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 @app.route('/programs/delete/<int:program_id>', methods=['GET', 'POST'])
 @login_required
@@ -199,8 +226,12 @@ def deleteProgramForm(program_id):
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        deletedProgram = Programs.query.filter_by(id=program_id).one()
-        return render_template('deleteprogram_form.html', program = deletedProgram)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            deletedProgram = Programs.query.filter_by(id=program_id).one()
+            return render_template('deleteprogram_form.html', program = deletedProgram)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 # Specific Programs Page
 @app.route('/programs/<int:prog_id>')
@@ -240,14 +271,18 @@ def createCourseForm():
         print(">>>>>>Before commit <<<<<<<")
         db.session.commit()
         return redirect(url_for('creditDashboard'))
-        # print("***************************After committ")
+        # print("***************************After commit")
         # print(newCourse)
         # course = Courses.query.filter_by(id = newCourse.id).one()
         # return redirect(url_for('createCoursePreReqForm', course_id=newCourse.id))
     else:
-        depts = Departments.query.all()
-        courses = Courses.query.all()
-        return render_template('createcourse_form.html', depts = depts, courses = courses)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            depts = Departments.query.all()
+            courses = Courses.query.all()
+            return render_template('createcourse_form.html', depts = depts, courses = courses)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 @app.route('/courses/create/<int:course_id>', methods=['GET', 'POST'])
 def createCoursePreReqForm(course_id):
@@ -323,9 +358,13 @@ def editCourseForm(course_id):
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        editedCourse = Courses.query.filter_by(id=course_id).one()
-        depts = Departments.query.all()
-        return render_template('editCourse_form.html', course = editedCourse, depts = depts)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            editedCourse = Courses.query.filter_by(id=course_id).one()
+            depts = Departments.query.all()
+            return render_template('editCourse_form.html', course = editedCourse, depts = depts)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 @app.route('/courses/delete/<int:course_id>', methods=['GET', 'POST'])
 @login_required
@@ -337,8 +376,12 @@ def deleteCourseForm(course_id):
         db.session.commit()
         return redirect(url_for('creditDashboard'))
     else:
-        deletedCourse = Courses.query.filter_by(id=course_id).one()
-        return render_template('deleteCourse_form.html', course = deletedCourse)
+        if current_user.role_id == 2:   # Only allow access to page if logged in user is a Advisor.
+            deletedCourse = Courses.query.filter_by(id=course_id).one()
+            return render_template('deleteCourse_form.html', course = deletedCourse)
+        else:
+            flash('You do not have correct privilege level to access page.')
+            return redirect(url_for('creditDashboard'))
 
 # Specific Courses Page
 @app.route('/courses/<int:course_id>')

@@ -3,6 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_user import roles_required, UserManager
 from logging.handlers import RotatingFileHandler
 import os
 import logging
@@ -15,6 +16,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+
+
 
 def create_app(config_class=Config):
 

@@ -1,4 +1,4 @@
-2019-03-31 21:17:26,318 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-04-09 13:25:12,444 ERROR: Exception on /depts/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,13 +12,30 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 297, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 21:18:33,345 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 21:18:56,013 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 147, in deptDetail
+    return render_template('departments_detail.html', dept = department)
+  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
+    {% block content %}
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 47, in block "content"
+    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit Department</a>
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'course' is undefined
+2019-04-09 13:25:26,713 ERROR: Exception on /depts/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -32,13 +49,32 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 297, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 21:19:52,511 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 21:20:06,458 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 147, in deptDetail
+    return render_template('departments_detail.html', dept = department)
+  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
+    {% block content %}
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\departments_detail.html", line 47, in block "content"
+    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit Department</a>
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'course' is undefined
+2019-04-09 13:26:20,914 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-09 13:39:37,225 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-09 13:39:44,790 ERROR: Exception on /programs/1 [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -52,89 +88,30 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 297, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 21:21:25,995 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 21:21:40,742 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 205, in programDetail
+    return render_template('program_detail.html', program = Program)
+  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 301, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 21:58:01,632 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 21:58:22,642 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 301, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 22:02:40,171 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 22:02:54,388 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 301, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 22:04:36,122 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-03-31 22:05:02,110 ERROR: Exception on /courses/edit/2 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
-Traceback (most recent call last):
-  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 303, in editCourseForm
-    coreq_course = Courses.query.filter_by(id=coreq_course_id).one()
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\query.py", line 2843, in one
-    raise orm_exc.NoResultFound("No row was found for one()")
-sqlalchemy.orm.exc.NoResultFound: No row was found for one()
-2019-03-31 22:06:58,620 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\program_detail.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
+    {% block content %}
+  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\program_detail.html", line 47, in block "content"
+    <a class="nav-link" href="{{ url_for('editCourseForm', course_id = course.id) }}">Edit {{button_type}}</a>
+  File "c:\python36\lib\site-packages\jinja2\environment.py", line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'course' is undefined
+2019-04-09 13:40:38,409 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-09 13:41:04,098 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-10 17:50:40,994 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-04-12 14:47:32,727 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]

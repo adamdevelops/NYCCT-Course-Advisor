@@ -1,4 +1,10 @@
-2019-05-07 15:24:09,128 ERROR: Exception on /schools [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-07-02 20:11:46,259 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:12:11,323 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:13:15,517 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:37:09,127 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:37:45,085 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-30 20:31:52,488 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-30 20:36:33,116 ERROR: Exception on /programs/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,39 +18,20 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 352, in schoolDashboard
-    return render_template('schools_dashboard.html', schools = schools)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 24, in block "content"
-    <a href="{{ url_for('createSchoolForm') }}" >
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 323, in url_for
-    force_external=external)
-  File "c:\python36\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'createSchoolForm'. Did you mean 'createCourseForm' instead?
-2019-05-07 15:26:28,849 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:26:39,957 ERROR: Exception on /schools [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 201, in editProgramForm
+    editedProgram.degree = request.form['degree']
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 229, in __set__
+    instance_dict(instance), value, None)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 831, in set
+    value = self.fire_replace_event(state, dict_, value, old, initiator)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 853, in fire_replace_event
+    self._replace_token or self._init_append_or_replace_token())
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 88, in set_
+    newvalue_state = attributes.instance_state(newvalue)
+AttributeError: 'str' object has no attribute '_sa_instance_state'
+2019-07-30 21:01:43,505 ERROR: Exception on /programs/edit/4 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -58,40 +45,21 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 352, in schoolDashboard
-    return render_template('schools_dashboard.html', schools = schools)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 24, in block "content"
-    <a  > <!-- href="{{ url_for('createSchoolForm') }}"  -->
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1805, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 323, in url_for
-    force_external=external)
-  File "c:\python36\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'createSchoolForm'. Did you mean 'createCourseForm' instead?
-2019-05-07 15:31:07,350 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:31:12,690 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:31:36,495 ERROR: Exception on /schools [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 201, in editProgramForm
+    editedProgram.degree = request.form['degree']
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 229, in __set__
+    instance_dict(instance), value, None)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 831, in set
+    value = self.fire_replace_event(state, dict_, value, old, initiator)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 853, in fire_replace_event
+    self._replace_token or self._init_append_or_replace_token())
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 88, in set_
+    newvalue_state = attributes.instance_state(newvalue)
+AttributeError: 'str' object has no attribute '_sa_instance_state'
+2019-07-30 21:27:12,943 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-30 21:27:19,035 ERROR: Exception on /programs/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -105,39 +73,72 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 352, in schoolDashboard
-    return render_template('schools_dashboard.html', schools = schools)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 24, in block "content"
-    <a  > <!-- href="{{ url_for('createSchoolForm') }}"  -->
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1805, in handle_url_build_error
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 201, in editProgramForm
+    editedProgram.degree = request.form['degree']
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 229, in __set__
+    instance_dict(instance), value, None)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 831, in set
+    value = self.fire_replace_event(state, dict_, value, old, initiator)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 853, in fire_replace_event
+    self._replace_token or self._init_append_or_replace_token())
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 88, in set_
+    newvalue_state = attributes.instance_state(newvalue)
+AttributeError: 'str' object has no attribute '_sa_instance_state'
+2019-07-30 21:28:25,618 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-30 21:28:29,139 ERROR: Exception on /programs/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
     raise value
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 323, in url_for
-    force_external=external)
-  File "c:\python36\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'createSchoolForm'. Did you mean 'createCourseForm' instead?
-2019-05-07 21:19:30,474 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 21:32:04,285 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 21:34:12,972 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 21:34:55,245 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 21:35:42,182 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 201, in editProgramForm
+    editedProgram.degree = request.form['degree']
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 229, in __set__
+    instance_dict(instance), value, None)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 831, in set
+    value = self.fire_replace_event(state, dict_, value, old, initiator)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 853, in fire_replace_event
+    self._replace_token or self._init_append_or_replace_token())
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 88, in set_
+    newvalue_state = attributes.instance_state(newvalue)
+AttributeError: 'str' object has no attribute '_sa_instance_state'
+2019-07-30 21:29:47,087 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-30 21:29:56,089 ERROR: Exception on /programs/edit/1 [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 201, in editProgramForm
+    editedProgram.degree = request.form['degree']
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 229, in __set__
+    instance_dict(instance), value, None)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 831, in set
+    value = self.fire_replace_event(state, dict_, value, old, initiator)
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 853, in fire_replace_event
+    self._replace_token or self._init_append_or_replace_token())
+  File "c:\python36\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 88, in set_
+    newvalue_state = attributes.instance_state(newvalue)
+AttributeError: 'str' object has no attribute '_sa_instance_state'

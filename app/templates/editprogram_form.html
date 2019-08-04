@@ -19,10 +19,10 @@
 								<input type ="text" maxlength="80" class="form-control" name="name" value="{{program.name}}">
 
 								<label for="name">Code:</label>
-								<input type ="text" maxlength="80" class="form-control" name="code" value="{{program.code}}">
+								<input type ="text" maxlength="80" class="form-control" name="code" value="{{program.major_short}}">
 
 								<label for="name">Current Selected Degree:</label>
-								<input type ="text" maxlength="80" class="form-control" name="current_degree" value="{{program.degree.type}}">
+								<input type ="text" maxlength="80" class="form-control" name="current_degree" value="{{program.degree.type}}" readonly>
 
 								<label for="name">New Degree:</label>
 								<select name="degree">

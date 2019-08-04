@@ -1,4 +1,5 @@
-2019-05-06 14:56:02,316 ERROR: Exception on /programs/create [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+2019-06-30 20:25:17,846 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-06-30 20:25:28,789 ERROR: Exception on /depts/create [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,14 +13,13 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 170, in createProgramForm
-    degrees = Degree.query.all()
-NameError: name 'Degree' is not defined
-2019-05-06 14:56:31,763 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-06 14:58:11,357 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-06 14:58:32,495 ERROR: Exception on /programs/create [POST] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "c:\python36\lib\site-packages\flask_user\decorators.py", line 129, in decorator
+    user_manager = current_app.user_manager
+  File "c:\python36\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Flask' object has no attribute 'user_manager'
+2019-06-30 20:34:34,585 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-06-30 20:35:05,856 ERROR: Exception on /depts/create [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -33,37 +33,21 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "c:\python36\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 164, in createProgramForm
-    newProgram = Programs(name = name, major_short= major_short, degree = degree)
-  File "<string>", line 4, in __init__
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 417, in _initialize_instance
-    manager.dispatch.init_failure(self, args, kwargs)
-  File "c:\python36\lib\site-packages\sqlalchemy\util\langhelpers.py", line 66, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "c:\python36\lib\site-packages\sqlalchemy\util\compat.py", line 187, in reraise
-    raise value
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\state.py", line 414, in _initialize_instance
-    return manager.original_init(*mixed[1:], **kwargs)
-  File "c:\python36\lib\site-packages\sqlalchemy\ext\declarative\base.py", line 700, in _declarative_constructor
-    setattr(self, k, kwargs[k])
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 229, in __set__
-    instance_dict(instance), value, None)
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 831, in set
-    value = self.fire_replace_event(state, dict_, value, old, initiator)
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 853, in fire_replace_event
-    self._replace_token or self._init_append_or_replace_token())
-  File "c:\python36\lib\site-packages\sqlalchemy\orm\attributes.py", line 1199, in emit_backref_from_scalar_set_event
-    child_state, child_dict = instance_state(child),\
-AttributeError: 'str' object has no attribute '_sa_instance_state'
-2019-05-06 15:03:04,689 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-06 16:06:31,941 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:01:04,585 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:21:30,247 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:21:49,303 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:22:41,263 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
-2019-05-07 15:23:18,664 ERROR: Exception on /schools [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+  File "c:\python36\lib\site-packages\flask_user\decorators.py", line 129, in decorator
+    user_manager = current_app.user_manager
+  File "c:\python36\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Flask' object has no attribute 'user_manager'
+2019-06-30 20:52:26,079 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+2019-06-30 21:06:50,450 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:07:28,853 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:07:57,529 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:09:13,746 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:44]
+2019-06-30 21:09:54,842 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:12:14,487 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:21:33,024 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:25:01,581 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-06-30 21:25:02,547 ERROR: Exception on /depts/create [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
 Traceback (most recent call last):
   File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
     response = self.full_dispatch_request()
@@ -77,35 +61,79 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 352, in schoolDashboard
-    return render_template('schools_dashboard.html', schools = schools)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 134, in render_template
-    context, ctx.app)
-  File "c:\python36\lib\site-packages\flask\templating.py", line 116, in _render
-    rv = template.render(context)
-  File "c:\python36\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "c:\python36\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "c:\python36\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\base.html", line 15, in top-level template code
-    {% block content %}
-  File "C:\Users\Adam\desktop\City Tech Proj\app\templates\schools_dashboard.html", line 24, in block "content"
-    <a href="{{ url_for('') }}" >
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 333, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\python36\lib\site-packages\flask\app.py", line 1805, in handle_url_build_error
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 115, in createDeptForm
+    print(current_user.name)
+  File "c:\python36\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'User' object has no attribute 'name'
+2019-06-30 21:25:31,542 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 14:43:53,512 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:00:17,766 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:00:18,990 ERROR: Exception on / [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
     reraise(exc_type, exc_value, tb)
   File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
     raise value
-  File "c:\python36\lib\site-packages\flask\helpers.py", line 323, in url_for
-    force_external=external)
-  File "c:\python36\lib\site-packages\werkzeug\routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint ''. Did you mean 'createProgramForm' instead?
-2019-05-07 15:24:07,642 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:37]
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 18, in creditDashboard
+    print({{current_user.name}})
+  File "c:\python36\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'name'
+2019-07-02 15:00:46,057 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:00:46,489 ERROR: Exception on / [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 18, in creditDashboard
+    print(current_user.name)
+  File "c:\python36\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'AnonymousUserMixin' object has no attribute 'name'
+2019-07-02 15:00:58,820 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:01:32,082 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:02:26,484 ERROR: Exception on /depts [GET] [in c:\python36\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "c:\python36\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\python36\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "c:\python36\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "c:\python36\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\python36\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Adam\desktop\City Tech Proj\app\routes.py", line 100, in deptDashboard
+    print(current_user.name)
+  File "c:\python36\lib\site-packages\werkzeug\local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'User' object has no attribute 'name'
+2019-07-02 15:02:39,449 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:03:47,807 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:05:29,399 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:05:58,939 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 15:07:39,717 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:01:22,069 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:08:05,922 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
+2019-07-02 20:08:26,250 INFO: CreditTracker startup [in C:\Users\Adam\desktop\City Tech Proj\app\__init__.py:40]
