@@ -19,7 +19,7 @@ def creditDashboard():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # User is already logged in
+    # User is already logged in.
     if current_user.is_authenticated:
         return redirect(url_for('creditDashboard'))
     form = LoginForm()
